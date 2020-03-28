@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Kefilm</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fixed_upcoming">Upcoming</string>
+    <string name="fixed_top_rated">Top Rated</string>
+    <string name="fixed_popular">Popular</string>
+    <string name="dummy_movie_name">The Irishman</string>
+    <string name="dummy_release_date">27 Sep 2019</string>
+    <string name="dummy_movie_overview">An aging hitman recalls his time with the mob and the intersecting events with his friend, Jimmy Hoffa, through the 1950-70s.</string>
+
+    <string-array name="tab_titles">
+        <item>Upcoming</item>
+        <item>Top Rated</item>
+        <item>Popular</item>
+    </string-array>
 </resources>

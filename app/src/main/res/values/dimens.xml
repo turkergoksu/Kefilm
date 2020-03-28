@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding16dp">16dp</dimen>
+    <dimen name="margin16dp">16dp</dimen>
+    <dimen name="textSize28sp">28sp</dimen>
+    <dimen name="padding8dp">8dp</dimen>
+    <dimen name="textSize16sp">16sp</dimen>
+    <dimen name="textSize12sp">12sp</dimen>
+    <dimen name="upcomingItemWidth">300dp</dimen>
+    <dimen name="upcomingItemHeight">450dp</dimen>
+    <dimen name="margin4dp">4dp</dimen>
+</resources>
