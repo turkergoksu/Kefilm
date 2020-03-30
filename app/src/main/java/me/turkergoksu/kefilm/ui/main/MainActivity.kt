@@ -1,8 +1,9 @@
-package me.turkergoksu.kefilm
+package me.turkergoksu.kefilm.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.navigation.Navigation
+import me.turkergoksu.kefilm.R
 
 class MainActivity : AppCompatActivity() {
 

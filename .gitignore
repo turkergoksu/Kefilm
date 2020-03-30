@@ -12,3 +12,5 @@
 /captures
 .externalNativeBuild
 .cxx
+/app/src/main/res/drawable/dummy_movie_poster.jpg
+/app/src/main/cpp/api-keys.cpp
