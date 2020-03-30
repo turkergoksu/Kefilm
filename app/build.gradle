@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -21,13 +22,13 @@ android {
         buildTypes {
 
             debug {
-                buildConfigField "String", "API_URL", "\"https://api.themoviedb.org/3/\""
+                buildConfigField "String", "API_URL", "\"https://api.themoviedb.org/\""
                 minifyEnabled false
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             }
 
             release {
-                buildConfigField "String", "API_URL", "https://api.themoviedb.org/3/"
+                buildConfigField "String", "API_URL", "https://api.themoviedb.org/"
                 minifyEnabled false
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             }
@@ -78,4 +79,11 @@ dependencies {
     def nav_version = "2.3.0-alpha04"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.6'
 }

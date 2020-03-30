@@ -1,6 +1,7 @@
 package me.turkergoksu.kefilm.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_main.*
 
 import me.turkergoksu.kefilm.R
+import me.turkergoksu.kefilm.data.remote.api.MovieServiceProvider
 
 /**
  * A simple [Fragment] subclass.
@@ -16,6 +18,7 @@ import me.turkergoksu.kefilm.R
 class MainFragment : Fragment() {
 
     private lateinit var mPagerAdapter: TopBarPagerAdapter
+    private val movieServiceProvider = MovieServiceProvider()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +36,10 @@ class MainFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewpager) { tabs, position ->
             tabs.text = resources.getStringArray(R.array.tab_titles)[position]
         }.attach()
+    }
+
+    companion object {
+        private val TAG = MainFragment::class.java.simpleName
     }
 
 }
