@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearSnapHelper
 import kotlinx.android.synthetic.main.fragment_upcoming.*
 
 import me.turkergoksu.kefilm.R
@@ -34,7 +35,9 @@ class UpcomingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView_upcoming_movies.adapter = adapter
-        recyclerView_upcoming_movies
+
+        val snapHelper = LinearSnapHelper()
+        snapHelper.attachToRecyclerView(recyclerView_upcoming_movies)
 
         movieServiceProvider.movieService.getUpcomingMovies().enqueue(object :
             Callback<UpcomingResponseModel> {
