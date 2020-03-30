@@ -33,6 +33,9 @@ class MainFragment : Fragment() {
         mPagerAdapter = TopBarPagerAdapter(this)
         viewpager.adapter = mPagerAdapter
 
+        // Disable swipe
+        viewpager.isUserInputEnabled = false
+
         TabLayoutMediator(tabLayout, viewpager) { tabs, position ->
             tabs.text = resources.getStringArray(R.array.tab_titles)[position]
         }.attach()
