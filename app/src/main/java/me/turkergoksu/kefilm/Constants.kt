@@ -1,8 +1,19 @@
 package me.turkergoksu.kefilm
 
 object Constants {
-    const val extensionApiKeysFileName = "api-keys"
-    const val apiImageUrl = "https://image.tmdb.org/t/p/original"
+    const val EXTENSION_API_KEYS_FILE_NAME = "api-keys"
 
-    const val topBarTabCount = 3
+    const val API_URL = "https://api.themoviedb.org/"
+    const val API_IMAGE_URL = "https://image.tmdb.org/t/p/original"
+
+    const val TOP_BAR_TAB_COUNT = 3
+
+    const val MOVIE_DB_DATE_FORMAT = "yyyy-MM-dd"
+
+    // Upcoming
+    const val UPCOMING_MOVIE_DATE_FORMAT = "dd MMM yyyy"
+    const val UPCOMING_MOVIE_ITEM_BLUR_RADIUS = 25
+    const val UPCOMING_MOVIE_ITEM_BLUR_SAMPLING_VALUE = 3
+    const val UPCOMING_MOVIE_ITEM_CORNER_RADIUS = 50
+
 }

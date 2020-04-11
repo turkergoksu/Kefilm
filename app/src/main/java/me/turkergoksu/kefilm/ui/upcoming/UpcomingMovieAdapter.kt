@@ -1,20 +1,24 @@
 package me.turkergoksu.kefilm.ui.upcoming
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.api.load
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import me.turkergoksu.kefilm.Constants
-import me.turkergoksu.kefilm.R
 import me.turkergoksu.kefilm.databinding.ItemUpcomingMovieBinding
 import me.turkergoksu.kefilm.model.upcoming.UpcomingMovieItem
+import me.turkergoksu.kefilm.utils.StringUtil
+import java.text.SimpleDateFormat
 
 /**
  * Created by turkergoksu on 30-Mar-20, 8:19 PM
  */
 
-class UpcomingMovieAdapter : RecyclerView.Adapter<UpcomingMovieAdapter.MovieItemViewHolder>() {
+class UpcomingMovieAdapter :
+    RecyclerView.Adapter<UpcomingMovieAdapter.MovieItemViewHolder>() {
 
     private val upcomingMovieList = arrayListOf<UpcomingMovieItem>()
 
@@ -37,30 +41,42 @@ class UpcomingMovieAdapter : RecyclerView.Adapter<UpcomingMovieAdapter.MovieItem
     class MovieItemViewHolder(private val binding: ItemUpcomingMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("SimpleDateFormat")
         fun bind(upcomingMovie: UpcomingMovieItem) {
-            binding.imageViewMoviePoster.load(
+            Glide.with(binding.root.context).load(
                 "%s%s".format(
-                    Constants.apiImageUrl,
+                    Constants.API_IMAGE_URL,
                     upcomingMovie.posterPath
                 )
+            ).apply(
+                RequestOptions.bitmapTransform(
+                    RoundedCornersTransformation(
+                        Constants.UPCOMING_MOVIE_ITEM_CORNER_RADIUS,
+                        0
+                    )
+                )
             )
+                .into(binding.imageViewMoviePoster)
 
             binding.textViewMovieTitle.text = upcomingMovie.title
 
-            // TODO Format date yyyy-MM-dd to dd MMM yyyy (utils)
-            binding.textViewMovieReleaseDate.text = upcomingMovie.releaseDate
+            binding.textViewMovieReleaseDate.text = StringUtil.formatDate(
+                upcomingMovie.releaseDate,
+                SimpleDateFormat(Constants.MOVIE_DB_DATE_FORMAT),
+                SimpleDateFormat(Constants.UPCOMING_MOVIE_DATE_FORMAT)
+            )
 
             binding.textViewMovieOverview.text = upcomingMovie.overview
         }
 
         companion object {
             fun create(parent: ViewGroup): MovieItemViewHolder {
-                val binding = DataBindingUtil.inflate<ItemUpcomingMovieBinding>(
-                    LayoutInflater.from(parent.context),
-                    R.layout.item_upcoming_movie,
-                    parent,
-                    false
-                )
+                val binding = ItemUpcomingMovieBinding
+                    .inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
                 return MovieItemViewHolder(binding)
             }
         }

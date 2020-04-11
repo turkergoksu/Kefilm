@@ -1,7 +1,7 @@
 package me.turkergoksu.kefilm.data.remote.api
 
 import me.turkergoksu.kefilm.ApiKeyLibrary
-import me.turkergoksu.kefilm.BuildConfig
+import me.turkergoksu.kefilm.Constants
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -24,7 +24,7 @@ class MovieServiceProvider {
         }
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(BuildConfig.API_URL)
+        .baseUrl(Constants.API_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(httpClient.build())
         .build()

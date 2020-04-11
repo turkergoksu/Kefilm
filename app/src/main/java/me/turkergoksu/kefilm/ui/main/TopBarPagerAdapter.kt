@@ -11,13 +11,12 @@ import me.turkergoksu.kefilm.ui.upcoming.UpcomingFragment
  */
 class TopBarPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
-    override fun getItemCount(): Int = Constants.topBarTabCount
+    var fragments = arrayOf(
+        UpcomingFragment()
+    )
 
-    override fun createFragment(position: Int): Fragment {
-        when(position){
-            0 -> return UpcomingFragment()
-        }
-        return Fragment()
-    }
+    override fun getItemCount(): Int = Constants.TOP_BAR_TAB_COUNT
+
+    override fun createFragment(position: Int): Fragment = fragments[position]
 
 }
