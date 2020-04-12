@@ -15,7 +15,7 @@ class TopBarPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
         UpcomingFragment()
     )
 
-    override fun getItemCount(): Int = Constants.TOP_BAR_TAB_COUNT
+    override fun getItemCount(): Int = Constants.TOP_BAR_TAB_COUNT - 2
 
     override fun createFragment(position: Int): Fragment = fragments[position]
 

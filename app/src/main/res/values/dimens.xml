@@ -9,4 +9,6 @@
     <dimen name="upcomingItemWidth">300dp</dimen>
     <dimen name="upcomingItemHeight">450dp</dimen>
     <dimen name="margin4dp">4dp</dimen>
+    <dimen name="margin8dp">8dp</dimen>
+    <dimen name="padding4dp">4dp</dimen>
 </resources>

@@ -14,6 +14,6 @@ object Constants {
     const val UPCOMING_MOVIE_DATE_FORMAT = "dd MMM yyyy"
     const val UPCOMING_MOVIE_ITEM_BLUR_RADIUS = 25
     const val UPCOMING_MOVIE_ITEM_BLUR_SAMPLING_VALUE = 3
-    const val UPCOMING_MOVIE_ITEM_CORNER_RADIUS = 50
+    const val UPCOMING_MOVIE_ITEM_CORNER_RADIUS = 75
 
 }

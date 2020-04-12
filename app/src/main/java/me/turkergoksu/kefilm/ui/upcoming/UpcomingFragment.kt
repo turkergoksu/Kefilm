@@ -6,17 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 
-import me.turkergoksu.kefilm.data.remote.api.MovieServiceProvider
 import me.turkergoksu.kefilm.databinding.FragmentUpcomingBinding
-import me.turkergoksu.kefilm.model.upcoming.UpcomingMovieItem
-import me.turkergoksu.kefilm.model.upcoming.UpcomingResponseModel
 import me.turkergoksu.kefilm.utils.ImageLoadingUtil
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 /**
  * A simple [Fragment] subclass.
@@ -24,7 +20,7 @@ import retrofit2.Response
 class UpcomingFragment : Fragment() {
 
     private val adapter = UpcomingMovieAdapter()
-    private val movieServiceProvider = MovieServiceProvider()
+    private val upcomingViewModel: UpcomingViewModel by viewModels()
     private lateinit var scrollListener: CustomScrollListener
 
     private lateinit var binding: FragmentUpcomingBinding
@@ -56,18 +52,8 @@ class UpcomingFragment : Fragment() {
         )
         binding.recyclerViewUpcomingMovies.addOnScrollListener(scrollListener)
 
-        movieServiceProvider.movieService.getUpcomingMovies().enqueue(object :
-            Callback<UpcomingResponseModel> {
-            override fun onFailure(call: Call<UpcomingResponseModel>, t: Throwable) {
-                // TODO
-            }
-
-            override fun onResponse(
-                call: Call<UpcomingResponseModel>,
-                response: Response<UpcomingResponseModel>
-            ) {
-                val upcomingMovieList: List<UpcomingMovieItem> = response.body()?.results!!
-
+        upcomingViewModel.getUpcomingMovieListLiveData()
+            .observe(viewLifecycleOwner, Observer { upcomingMovieList ->
                 // Set listener's movie list
                 scrollListener.setUpcomingMovieList(upcomingMovieList)
 
@@ -80,9 +66,7 @@ class UpcomingFragment : Fragment() {
 
                 // Set adapter's movie list
                 adapter.setUpcomingMovieList(upcomingMovieList)
-            }
-
-        })
+            })
     }
 
     companion object {
