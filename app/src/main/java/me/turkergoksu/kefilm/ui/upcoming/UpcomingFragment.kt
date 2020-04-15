@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 
 import me.turkergoksu.kefilm.databinding.FragmentUpcomingBinding
+import me.turkergoksu.kefilm.model.upcoming.UpcomingMovieItem
 import me.turkergoksu.kefilm.utils.ImageLoadingUtil
 
 /**
@@ -25,6 +26,12 @@ class UpcomingFragment : Fragment() {
 
     private lateinit var binding: FragmentUpcomingBinding
     private lateinit var layoutManager: LinearLayoutManager
+
+    private var upcomingMovieList = listOf<UpcomingMovieItem>()
+
+    companion object {
+        val TAG = UpcomingFragment::class.java.simpleName
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +61,8 @@ class UpcomingFragment : Fragment() {
 
         upcomingViewModel.getUpcomingMovieListLiveData()
             .observe(viewLifecycleOwner, Observer { upcomingMovieList ->
+                this.upcomingMovieList = upcomingMovieList
+
                 // Set listener's movie list
                 scrollListener.setUpcomingMovieList(upcomingMovieList)
 
@@ -66,11 +75,22 @@ class UpcomingFragment : Fragment() {
 
                 // Set adapter's movie list
                 adapter.setUpcomingMovieList(upcomingMovieList)
+
+                // Hide progress bar
+                binding.progressBarLoading.hide()
             })
     }
 
-    companion object {
-        val TAG = UpcomingFragment::class.java.simpleName
+    override fun onResume() {
+        super.onResume()
+        // Set background image
+        if (upcomingMovieList.isNotEmpty()) {
+            ImageLoadingUtil.changeMainFragmentBackground(
+                context!!,
+                binding,
+                upcomingMovieList[scrollListener.currentMovieItemIndex].posterPath
+            )
+        }
     }
 
 }

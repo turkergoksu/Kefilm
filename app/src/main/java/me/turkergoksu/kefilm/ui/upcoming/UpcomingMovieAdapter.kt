@@ -55,8 +55,7 @@ class UpcomingMovieAdapter :
                         0
                     )
                 )
-            )
-                .into(binding.imageViewMoviePoster)
+            ).into(binding.imageViewMoviePoster)
 
             binding.textViewMovieTitle.text = upcomingMovie.title
 

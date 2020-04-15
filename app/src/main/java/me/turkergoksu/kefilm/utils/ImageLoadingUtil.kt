@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
@@ -18,6 +19,13 @@ import me.turkergoksu.kefilm.databinding.FragmentUpcomingBinding
  */
 
 object ImageLoadingUtil {
+
+    fun resetMainFragmentBackground(
+        context: Context,
+        view: View?
+    ) {
+        view!!.setBackgroundColor(context.getColor(Constants.APP_DEFAULT_BACKGROUND_COLOR))
+    }
 
     fun changeMainFragmentBackground(
         context: Context,

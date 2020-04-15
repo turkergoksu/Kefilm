@@ -23,7 +23,7 @@ class CustomScrollListener(
     private lateinit var upcomingMovieList: List<UpcomingMovieItem>
 
     private lateinit var direction: Direction
-    private var currentMovieItemIndex: Int = 0
+    var currentMovieItemIndex: Int = 0
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)

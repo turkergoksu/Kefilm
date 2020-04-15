@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.upcoming.UpcomingFragment">
+    tools:context=".ui.toprated.TopRatedFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_upcoming_movies"
+        android:id="@+id/recyclerView_topRated_movies"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_upcoming_movie" />
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progressBar_loading"

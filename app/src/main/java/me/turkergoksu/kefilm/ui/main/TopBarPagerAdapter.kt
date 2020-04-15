@@ -3,6 +3,7 @@ package me.turkergoksu.kefilm.ui.main
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import me.turkergoksu.kefilm.Constants
+import me.turkergoksu.kefilm.ui.toprated.TopRatedFragment
 import me.turkergoksu.kefilm.ui.upcoming.UpcomingFragment
 
 
@@ -12,10 +13,11 @@ import me.turkergoksu.kefilm.ui.upcoming.UpcomingFragment
 class TopBarPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     var fragments = arrayOf(
-        UpcomingFragment()
+        UpcomingFragment(),
+        TopRatedFragment()
     )
 
-    override fun getItemCount(): Int = Constants.TOP_BAR_TAB_COUNT - 2
+    override fun getItemCount(): Int = Constants.TOP_BAR_TAB_COUNT - 1
 
     override fun createFragment(position: Int): Fragment = fragments[position]
 

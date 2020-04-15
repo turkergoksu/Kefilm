@@ -1,5 +1,6 @@
 package me.turkergoksu.kefilm.utils
 
+import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 
 /**
@@ -15,5 +16,12 @@ object StringUtil {
     ): String {
         val date = oldDateFormat.parse(dateText)
         return newDateFormat.format(date)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    fun getYearFromDate(dateText: String, dateFormat: SimpleDateFormat): String {
+        val date = dateFormat.parse(dateText)
+        val yearDateFormat = SimpleDateFormat("yyyy")
+        return yearDateFormat.format(date)
     }
 }

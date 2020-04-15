@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_movie_poster"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_margin="@dimen/margin8dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/dummy_movie_poster" />
+
+    <TextView
+        android:id="@+id/textView_movie_item_index"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin8dp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize18sp"
+        app:layout_constraintStart_toEndOf="@id/imageView_movie_poster"
+        app:layout_constraintTop_toTopOf="@id/imageView_movie_poster"
+        tools:text="1." />
+
+    <TextView
+        android:id="@+id/textView_movie_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin4dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat"
+        android:maxEms="10"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize16sp"
+        app:layout_constraintBottom_toBottomOf="@id/textView_movie_item_index"
+        app:layout_constraintTop_toTopOf="@id/textView_movie_item_index"
+        app:layout_constraintStart_toEndOf="@id/textView_movie_item_index"
+        tools:text="@string/dummy_movie_name" />
+
+    <TextView
+        android:id="@+id/textView_movie_release_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin4dp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/light_gray"
+        android:textSize="@dimen/textSize12sp"
+        app:layout_constraintBottom_toBottomOf="@id/textView_movie_title"
+        app:layout_constraintStart_toEndOf="@id/textView_movie_title"
+        app:layout_constraintTop_toTopOf="@id/textView_movie_title"
+        tools:text="@string/dummy_movie_release_year" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/todo_rate"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/margin8dp"
+        app:layout_constraintStart_toStartOf="@id/textView_movie_item_index"
+        app:layout_constraintTop_toBottomOf="@id/textView_movie_item_index"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView_movie_runtime"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="@dimen/margin16dp"-->
+    <!--        android:fontFamily="@font/montserrat"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="@dimen/textSize14sp"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/todo_rate"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/todo_rate"-->
+    <!--        tools:text="@string/dummy_movie_runtime" />-->
+
+    <TextView
+        android:id="@+id/textView_movie_genres"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin16dp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize12sp"
+        app:layout_constraintBottom_toBottomOf="@id/todo_rate"
+        app:layout_constraintStart_toEndOf="@id/todo_rate"
+        app:layout_constraintTop_toTopOf="@id/todo_rate"
+        tools:text="@string/dummy_movie_genres" />
+
+    <TextView
+        android:id="@+id/textView_movie_overview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin4dp"
+        android:layout_marginEnd="@dimen/margin8dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat"
+        android:gravity="bottom|fill_horizontal"
+        android:maxLines="4"
+        android:textColor="@color/light_gray"
+        android:textSize="@dimen/textSize12sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/imageView_movie_poster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/todo_rate"
+        tools:text="@string/dummy_movie_overview" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
