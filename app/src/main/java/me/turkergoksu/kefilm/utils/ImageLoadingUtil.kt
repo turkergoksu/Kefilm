@@ -1,18 +1,17 @@
 package me.turkergoksu.kefilm.utils
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.view.View
+import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
+import com.bumptech.glide.request.target.*
+import com.bumptech.glide.request.transition.*
 import jp.wasabeef.glide.transformations.BlurTransformation
-import kotlinx.android.synthetic.main.fragment_main.view.*
 import me.turkergoksu.kefilm.Constants
-import me.turkergoksu.kefilm.databinding.FragmentUpcomingBinding
+import me.turkergoksu.kefilm.R
 
 /**
  * Created by turkergoksu on 12-Apr-20, 12:44 AM
@@ -22,17 +21,31 @@ object ImageLoadingUtil {
 
     fun resetMainFragmentBackground(
         context: Context,
-        view: View?
+        mainFragmentImageView: ImageView
     ) {
-        view!!.setBackgroundColor(context.getColor(Constants.APP_DEFAULT_BACKGROUND_COLOR))
+        Glide.with(context)
+            .load(R.color.defaultBackground).into(mainFragmentImageView)
     }
 
-    fun changeMainFragmentBackground(
+    fun changeImageWithCrossFadeTransition(
         context: Context,
-        binding: FragmentUpcomingBinding,
-        posterPath: String
+        imageView: ImageView,
+        posterPath: String,
+        duration: Int
     ) {
-        Glide.with(context).asBitmap()
+        Glide
+            .with(context)
+            .asDrawable()
+            .transition(
+                DrawableTransitionOptions.with(object : TransitionFactory<Drawable> {
+                    override fun build(
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Transition<Drawable>? {
+                        return DrawableCrossFadeTransition(duration, true)
+                    }
+                })
+            )
             .apply(
                 RequestOptions.bitmapTransform(
                     BlurTransformation(
@@ -40,27 +53,33 @@ object ImageLoadingUtil {
                         Constants.UPCOMING_MOVIE_ITEM_BLUR_SAMPLING_VALUE
                     )
                 )
-            ).load(
+            )
+            .load(
                 "%s%s".format(
                     Constants.API_IMAGE_URL,
                     posterPath
                 )
-            ).into(object : CustomTarget<Bitmap>() {
-                override fun onResourceReady(
-                    resource: Bitmap,
-                    transition: Transition<in Bitmap>?
-                ) {
-                    val drawable = BitmapDrawable(context.resources, resource)
-                    // ... I assume ...
-                    // binding.root = fragment_upcoming
-                    // binding.root.rootView = viewpager
-                    // binding.root.rootView.rootView = fragment_main
-                    binding.root.rootView.rootView.layout_main.background = drawable
-                }
+            )
+            .into(
+                object : CustomTarget<Drawable>() {
+                    override fun onLoadCleared(placeholder: Drawable?) {
+                        TODO("Not yet implemented")
+                    }
 
-                override fun onLoadCleared(placeholder: Drawable?) {
-                    TODO("Not yet implemented")
-                }
-            })
+                    override fun onResourceReady(
+                        resource: Drawable,
+                        transition: Transition<in Drawable>?
+                    ) {
+                        val isTransitionSucceed = transition?.transition(
+                            resource,
+                            DrawableImageViewTarget(imageView)
+                        )
+
+                        if (isTransitionSucceed!!.not()) {
+                            imageView.setImageDrawable(resource)
+                        }
+                    }
+
+                })
     }
 }

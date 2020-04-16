@@ -15,6 +15,7 @@ object Constants {
     const val UPCOMING_MOVIE_ITEM_BLUR_RADIUS = 25
     const val UPCOMING_MOVIE_ITEM_BLUR_SAMPLING_VALUE = 3
     const val UPCOMING_MOVIE_ITEM_CORNER_RADIUS = 75
+    const val UPCOMING_CROSS_FADE_TRANSITION_DURATION = 1000
 
     const val APP_DEFAULT_BACKGROUND_COLOR = R.color.defaultBackground
 

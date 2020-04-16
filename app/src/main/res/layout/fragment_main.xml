@@ -5,8 +5,14 @@
     android:id="@+id/layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/defaultBackground"
+    android:background="@null"
     tools:context=".ui.main.MainFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_main_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

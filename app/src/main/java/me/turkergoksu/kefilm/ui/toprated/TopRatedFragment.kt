@@ -1,7 +1,6 @@
 package me.turkergoksu.kefilm.ui.toprated
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,7 @@ import androidx.lifecycle.Observer
 
 import me.turkergoksu.kefilm.databinding.FragmentTopRatedBinding
 import me.turkergoksu.kefilm.ui.GenreViewModel
-import me.turkergoksu.kefilm.utils.ImageLoadingUtil
+import me.turkergoksu.kefilm.ui.upcoming.OnUpcomingFragmentEventListener
 
 /**
  * A simple [Fragment] subclass.
@@ -21,6 +20,8 @@ class TopRatedFragment : Fragment() {
     private val adapter = TopRatedMovieAdapter()
     private val topRatedViewModel: TopRatedViewModel by viewModels()
     private val genreViewModel: GenreViewModel by viewModels()
+
+    internal lateinit var onUpcomingFragmentEventListener: OnUpcomingFragmentEventListener
 
     private lateinit var binding: FragmentTopRatedBinding
 
@@ -52,10 +53,15 @@ class TopRatedFragment : Fragment() {
         })
     }
 
+    fun setOnUpcomingFragmentEventListener(onUpcomingFragmentEventListener: OnUpcomingFragmentEventListener) {
+        this.onUpcomingFragmentEventListener = onUpcomingFragmentEventListener
+    }
+
     override fun onResume() {
         super.onResume()
+        // TODO bu call'u UpcomingFragment'ın onDetach veya onStop fonklarının icine koymak daha mantıklı
         // Reset background to default color
-        ImageLoadingUtil.resetMainFragmentBackground(context!!, parentFragment!!.view)
+        onUpcomingFragmentEventListener.onUpcomingFragmentStop()
     }
 
 }

@@ -1,20 +1,16 @@
 package me.turkergoksu.kefilm.ui.upcoming
 
-import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import me.turkergoksu.kefilm.databinding.FragmentUpcomingBinding
 import me.turkergoksu.kefilm.model.upcoming.UpcomingMovieItem
-import me.turkergoksu.kefilm.utils.ImageLoadingUtil
 
 /**
  * Created by turkergoksu on 12-Apr-20, 12:01 AM
  */
 
 class CustomScrollListener(
-    private val context: Context,
     private val layoutManager: LinearLayoutManager,
-    private val binding: FragmentUpcomingBinding
+    private val callback: OnUpcomingFragmentEventListener
 ) : RecyclerView.OnScrollListener() {
     enum class Direction {
         LEFT, RIGHT
@@ -40,11 +36,7 @@ class CustomScrollListener(
                 layoutManager.findLastVisibleItemPosition()
 
             // Set background image for current item
-            ImageLoadingUtil.changeMainFragmentBackground(
-                context,
-                binding,
-                upcomingMovieList[currentMovieItemIndex].posterPath
-            )
+            callback.onItemChange(upcomingMovieList[currentMovieItemIndex].posterPath)
         }
     }
 

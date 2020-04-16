@@ -13,7 +13,14 @@
 
 ### ✨ Latest Screenshots
 ----
-TODO
+... TODO ...
+| Upcoming | Top Rated |  Popular |
+|:-:|:-:|:-:|
+| ![U](screenshots/latest/upcoming.gif?raw=true) | ![T]() | ![P]() |
+| Movie Details | Media |  People Details |
+| ![M]() | ![Me]() | ![Pe]() |
+| | Search | |
+| | ![S]() | |
 
 ### ✨ Prototype Screenshots
 ----
