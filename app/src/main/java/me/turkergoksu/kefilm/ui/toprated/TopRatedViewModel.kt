@@ -3,40 +3,43 @@ package me.turkergoksu.kefilm.ui.toprated
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import me.turkergoksu.kefilm.data.remote.api.MovieServiceProvider
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
+import me.turkergoksu.kefilm.model.toprated.TopRatedItemDataSource
+import me.turkergoksu.kefilm.model.toprated.TopRatedItemDataSourceFactory
 import me.turkergoksu.kefilm.model.toprated.TopRatedMovieItem
-import me.turkergoksu.kefilm.model.toprated.TopRatedResponseModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import java.util.concurrent.Executors
 
 /**
  * Created by turkergoksu on 13-Apr-20, 1:23 AM
  */
 
 class TopRatedViewModel : ViewModel() {
-    private val movieServiceProvider = MovieServiceProvider()
 
-    private val topRatedMovieListLiveData = MutableLiveData<List<TopRatedMovieItem>>()
+    private lateinit var topRatedItemDataSourceFactory: TopRatedItemDataSourceFactory
+    private lateinit var dataSourceMutableLiveData: MutableLiveData<TopRatedItemDataSource>
 
-    fun getTopRatedMovieListLiveData(): LiveData<List<TopRatedMovieItem>> {
+    private lateinit var pagedListLiveData: LiveData<PagedList<TopRatedMovieItem>>
+
+    fun getPagedListLiveData(): LiveData<PagedList<TopRatedMovieItem>> {
         fetchTopRatedMovies()
-        return topRatedMovieListLiveData
+        return pagedListLiveData
     }
 
     private fun fetchTopRatedMovies() {
-        movieServiceProvider.movieService.getTopRatedMovies().enqueue(object :
-            Callback<TopRatedResponseModel> {
-            override fun onFailure(call: Call<TopRatedResponseModel>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
+        topRatedItemDataSourceFactory = TopRatedItemDataSourceFactory(MutableLiveData())
+        dataSourceMutableLiveData = topRatedItemDataSourceFactory.mutableLiveData
 
-            override fun onResponse(
-                call: Call<TopRatedResponseModel>,
-                response: Response<TopRatedResponseModel>
-            ) {
-                topRatedMovieListLiveData.postValue(response.body()?.results)
-            }
-        })
+        val config = PagedList.Config.Builder()
+            .setInitialLoadSizeHint(20)
+            .setPageSize(20)
+            .setPrefetchDistance(4) // Defines how far from the edge of loaded content an access must be to trigger further loading.
+            .build()
+
+        val executor = Executors.newFixedThreadPool(5)
+        pagedListLiveData =
+            LivePagedListBuilder(topRatedItemDataSourceFactory, config)
+                .setFetchExecutor(executor)
+                .build()
     }
 }

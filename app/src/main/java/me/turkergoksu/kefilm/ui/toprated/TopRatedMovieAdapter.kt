@@ -3,6 +3,7 @@ package me.turkergoksu.kefilm.ui.toprated
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import me.turkergoksu.kefilm.Constants
@@ -13,53 +14,55 @@ import me.turkergoksu.kefilm.utils.StringUtil
 import java.text.SimpleDateFormat
 
 /**
- * Created by turkergoksu on 13-Apr-20, 12:11 AM
+ * Created by turkergoksu on 14-Jun-20, 3:35 AM
  */
 
 class TopRatedMovieAdapter :
-    RecyclerView.Adapter<TopRatedMovieAdapter.MovieItemViewHolder>() {
+    PagedListAdapter<TopRatedMovieItem, TopRatedMovieAdapter.MovieItemViewHolder>(
+        TopRatedMovieItem.CALLBACK
+    ) {
 
-    private val topRatedMovieList = arrayListOf<TopRatedMovieItem>()
     private var genreHashMap = mapOf<Int, Genre>()
-
-    fun setTopRatedMovieList(topRatedMovieList: List<TopRatedMovieItem>) {
-        this.topRatedMovieList.clear()
-        this.topRatedMovieList.addAll(topRatedMovieList)
-        notifyDataSetChanged()
-    }
 
     fun setGenreMap(genreHashMap: Map<Int, Genre>) {
         this.genreHashMap = genreHashMap
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder =
-        MovieItemViewHolder.create(parent)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MovieItemViewHolder {
+        return MovieItemViewHolder.create(parent)
+    }
 
-    override fun getItemCount(): Int = topRatedMovieList.size
-
-    override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) =
-        holder.bind(topRatedMovieList[position], position, genreHashMap)
+    override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
+        holder.bind(getItem(position), position, genreHashMap)
+    }
 
     class MovieItemViewHolder(private val binding: ItemTopratedMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SimpleDateFormat")
         fun bind(
-            topRatedMovie: TopRatedMovieItem,
+            topRatedMovie: TopRatedMovieItem?,
             position: Int,
             genreHashMap: Map<Int, Genre>
         ) {
+            // Set movie's poster image
             Glide.with(binding.root.context).load(
                 "%s%s".format(
                     Constants.API_IMAGE_URL,
-                    topRatedMovie.posterPath
+                    topRatedMovie!!.posterPath
                 )
             ).into(binding.imageViewMoviePoster)
 
+            // Set movie index
             binding.textViewMovieItemIndex.text = "%s.".format(position + 1)
 
+            // Set movie title
             binding.textViewMovieTitle.text = topRatedMovie.title
 
+            // Set movie release date
             binding.textViewMovieReleaseYear.text = "(%s)".format(
                 StringUtil.getYearFromDate(
                     topRatedMovie.releaseDate,
@@ -67,6 +70,7 @@ class TopRatedMovieAdapter :
                 )
             )
 
+            // Set movie's genres
             val genreText = StringBuilder()
             for (genreId in topRatedMovie.genreIds) {
                 if (genreHashMap[genreId] != null) {
@@ -77,6 +81,7 @@ class TopRatedMovieAdapter :
             }
             binding.textViewMovieGenres.text = genreText.toString()
 
+            // Set movie's overview
             binding.textViewMovieOverview.text = topRatedMovie.overview
         }
 
@@ -92,5 +97,4 @@ class TopRatedMovieAdapter :
             }
         }
     }
-
 }

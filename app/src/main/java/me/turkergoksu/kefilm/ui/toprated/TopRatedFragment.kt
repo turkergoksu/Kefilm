@@ -17,7 +17,7 @@ import me.turkergoksu.kefilm.ui.upcoming.OnUpcomingFragmentEventListener
  */
 class TopRatedFragment : Fragment() {
 
-    private val adapter = TopRatedMovieAdapter()
+    private lateinit var adapter: TopRatedMovieAdapter
     private val topRatedViewModel: TopRatedViewModel by viewModels()
     private val genreViewModel: GenreViewModel by viewModels()
 
@@ -37,16 +37,21 @@ class TopRatedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.recyclerViewTopRatedMovies.adapter = adapter
+        topRatedViewModel.getPagedListLiveData()
+            .observe(viewLifecycleOwner,
+                Observer {
+                    // Create adapter
+                    adapter = TopRatedMovieAdapter()
 
-        topRatedViewModel.getTopRatedMovieListLiveData()
-            .observe(viewLifecycleOwner, Observer { topRatedMovieList ->
-                // Set adapter's movie list
-                adapter.setTopRatedMovieList(topRatedMovieList)
+                    // Set adapter's list
+                    adapter.submitList(it)
 
-                // Hide progress bar
-                binding.progressBarLoading.hide()
-            })
+                    // Set adapter to RecyclerView
+                    binding.recyclerViewTopRatedMovies.adapter = adapter
+
+                    // Hide loading bar
+                    binding.progressBarLoading.hide()
+                })
 
         genreViewModel.getGenreHashMapLiveData().observe(viewLifecycleOwner, Observer { genres ->
             adapter.setGenreMap(genres)

@@ -1,5 +1,6 @@
 package me.turkergoksu.kefilm.model.toprated
 
+import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -21,4 +22,24 @@ data class TopRatedMovieItem(
     val genreIds: List<Int>,
     @SerializedName("overview")
     val overview: String
-)
+) {
+    companion object {
+        val CALLBACK: DiffUtil.ItemCallback<TopRatedMovieItem> =
+            object : DiffUtil.ItemCallback<TopRatedMovieItem>() {
+                override fun areItemsTheSame(
+                    oldItem: TopRatedMovieItem,
+                    newItem: TopRatedMovieItem
+                ): Boolean {
+                    return oldItem.id == newItem.id
+                }
+
+                override fun areContentsTheSame(
+                    oldItem: TopRatedMovieItem,
+                    newItem: TopRatedMovieItem
+                ): Boolean {
+                    return true
+                }
+
+            }
+    }
+}

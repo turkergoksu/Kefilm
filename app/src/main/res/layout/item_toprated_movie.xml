@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView_movie_poster"
         android:layout_width="100dp"
         android:layout_height="150dp"
         android:layout_margin="@dimen/margin8dp"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +43,8 @@
         android:textColor="@color/white"
         android:textSize="@dimen/textSize16sp"
         app:layout_constraintBottom_toBottomOf="@id/textView_movie_item_index"
-        app:layout_constraintTop_toTopOf="@id/textView_movie_item_index"
         app:layout_constraintStart_toEndOf="@id/textView_movie_item_index"
+        app:layout_constraintTop_toTopOf="@id/textView_movie_item_index"
         tools:text="@string/dummy_movie_name" />
 
     <TextView
@@ -59,11 +60,26 @@
         app:layout_constraintTop_toTopOf="@id/textView_movie_title"
         tools:text="@string/dummy_movie_release_year" />
 
+    <!--    <com.ramijemli.percentagechartview.PercentageChartView-->
+    <!--        android:id="@+id/percentage_movie_rate"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_marginTop="@dimen/margin8dp"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/textView_movie_item_index"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/textView_movie_item_index"-->
+    <!--        app:pcv_mode="ring"-->
+    <!--        app:pcv_animDuration="800"-->
+    <!--        app:pcv_backgroundBarThickness="5dp"-->
+    <!--        app:pcv_progressBarThickness="5dp"-->
+    <!--        app:pcv_animInterpolator="anticipate_overshoot"-->
+    <!--        app:pcv_progress="10"-->
+    <!--        app:pcv_startAngle="90"-->
+    <!--        app:pcv_orientation="clockwise" />-->
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/todo_rate"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="@dimen/margin8dp"
         app:layout_constraintStart_toStartOf="@id/textView_movie_item_index"
         app:layout_constraintTop_toBottomOf="@id/textView_movie_item_index"
@@ -83,27 +99,28 @@
 
     <TextView
         android:id="@+id/textView_movie_genres"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/margin16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin8dp"
+        android:layout_marginEnd="@dimen/margin8dp"
+        android:maxLines="1"
         android:fontFamily="@font/montserrat"
         android:textColor="@color/white"
         android:textSize="@dimen/textSize12sp"
-        app:layout_constraintBottom_toBottomOf="@id/todo_rate"
-        app:layout_constraintStart_toEndOf="@id/todo_rate"
-        app:layout_constraintTop_toTopOf="@id/todo_rate"
+        app:layout_constraintBottom_toTopOf="@+id/textView_movie_overview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView_movie_poster"
         tools:text="@string/dummy_movie_genres" />
 
     <TextView
         android:id="@+id/textView_movie_overview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin4dp"
         android:layout_marginEnd="@dimen/margin8dp"
         android:ellipsize="end"
         android:fontFamily="@font/montserrat"
         android:gravity="bottom|fill_horizontal"
-        android:maxLines="4"
+        android:maxLines="3"
         android:textColor="@color/light_gray"
         android:textSize="@dimen/textSize12sp"
         android:textStyle="italic"
