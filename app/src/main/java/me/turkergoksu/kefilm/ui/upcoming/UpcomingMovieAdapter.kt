@@ -1,13 +1,16 @@
 package me.turkergoksu.kefilm.ui.upcoming
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import me.turkergoksu.kefilm.Constants
+import me.turkergoksu.kefilm.R
 import me.turkergoksu.kefilm.databinding.ItemUpcomingMovieBinding
 import me.turkergoksu.kefilm.model.upcoming.UpcomingMovieItem
 import me.turkergoksu.kefilm.utils.StringUtil
@@ -66,6 +69,13 @@ class UpcomingMovieAdapter :
             )
 
             binding.textViewMovieOverview.text = upcomingMovie.overview
+
+            // Set click listener
+            binding.imageViewMoviePoster.setOnClickListener {
+                val args = Bundle()
+                args.putInt(Constants.MOVIE_DETAILS_MOVIE_ID_ARG_KEY, upcomingMovie.id)
+                Navigation.findNavController(it).navigate(R.id.movieDetailsFragment, args)
+            }
         }
 
         companion object {
