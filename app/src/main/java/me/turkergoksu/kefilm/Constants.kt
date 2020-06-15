@@ -17,6 +17,9 @@ object Constants {
     const val UPCOMING_MOVIE_ITEM_CORNER_RADIUS = 75
     const val UPCOMING_CROSS_FADE_TRANSITION_DURATION = 1000
 
+    // Movie Details
+    const val MOVIE_DETAILS_MOVIE_ID_ARG_KEY = "movieId"
+
     const val APP_DEFAULT_BACKGROUND_COLOR = R.color.defaultBackground
 
 }

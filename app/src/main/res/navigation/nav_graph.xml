@@ -20,4 +20,14 @@
         android:name="me.turkergoksu.kefilm.ui.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="me.turkergoksu.kefilm.ui.moviedetails.MovieDetailsFragment"
+        android:label="fragment_movie_details"
+        tools:layout="@layout/fragment_movie_details" />
+    <fragment
+        android:id="@+id/topRatedFragment"
+        android:name="me.turkergoksu.kefilm.ui.toprated.TopRatedFragment"
+        android:label="fragment_top_rated"
+        tools:layout="@layout/fragment_top_rated" />
 </navigation>

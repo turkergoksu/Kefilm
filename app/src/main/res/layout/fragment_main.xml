@@ -53,12 +53,14 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView_search_icon"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         android:padding="@dimen/padding16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tabLayout"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_search_24dp" />
 

@@ -80,12 +80,6 @@ dependencies {
     // Material
     implementation 'com.google.android.material:material:1.3.0-alpha01'
 
-    // Jetpack
-    // Navigation
-    def nav_version = "2.3.0-rc01"
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
@@ -95,6 +89,12 @@ dependencies {
 
     // PercentageChartView
 //    implementation 'com.ramijemli.percentagechartview:percentagechartview:0.3.1'
+
+    // Jetpack
+    // Navigation
+    def nav_version = "2.3.0-rc01"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     // Paging Library
     def paging_version = "2.1.2"

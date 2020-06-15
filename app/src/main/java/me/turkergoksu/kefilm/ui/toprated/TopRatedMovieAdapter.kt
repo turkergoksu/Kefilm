@@ -1,12 +1,15 @@
 package me.turkergoksu.kefilm.ui.toprated
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import me.turkergoksu.kefilm.Constants
+import me.turkergoksu.kefilm.R
 import me.turkergoksu.kefilm.databinding.ItemTopratedMovieBinding
 import me.turkergoksu.kefilm.model.genre.Genre
 import me.turkergoksu.kefilm.model.toprated.TopRatedMovieItem
@@ -83,6 +86,14 @@ class TopRatedMovieAdapter :
 
             // Set movie's overview
             binding.textViewMovieOverview.text = topRatedMovie.overview
+
+            // Set click listener
+            binding.root.setOnClickListener {
+                val args = Bundle()
+                args.putInt(Constants.MOVIE_DETAILS_MOVIE_ID_ARG_KEY, topRatedMovie.id)
+
+                Navigation.findNavController(it).navigate(R.id.movieDetailsFragment, args)
+            }
         }
 
         companion object {

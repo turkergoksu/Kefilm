@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 
 data class UpcomingMovieItem(
     @SerializedName("id")
-    val id: Long,
+    val id: Int,
     @SerializedName("poster_path")
     val posterPath: String,
     @SerializedName("title")
