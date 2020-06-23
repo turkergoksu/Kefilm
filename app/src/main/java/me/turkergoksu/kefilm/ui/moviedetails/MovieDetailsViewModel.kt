@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import me.turkergoksu.kefilm.data.remote.api.MovieServiceProvider
-import me.turkergoksu.kefilm.model.moviedetails.Cast
-import me.turkergoksu.kefilm.model.moviedetails.CastItem
-import me.turkergoksu.kefilm.model.moviedetails.MovieDetails
+import me.turkergoksu.kefilm.model.moviedetails.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +19,7 @@ class MovieDetailsViewModel : ViewModel() {
 
     private val movieDetailsLiveData = MutableLiveData<MovieDetails>()
     private val movieCastLiveData = MutableLiveData<List<CastItem>>()
+    private val movieBackdropListLiveData = MutableLiveData<List<Backdrop>>()
 
     fun getMovieDetailsLiveData(movieId: Int): LiveData<MovieDetails> {
         fetchMovieDetails(movieId)
@@ -54,6 +53,24 @@ class MovieDetailsViewModel : ViewModel() {
 
             override fun onResponse(call: Call<Cast>, response: Response<Cast>) {
                 movieCastLiveData.postValue(response.body()!!.cast)
+            }
+        })
+    }
+
+    fun getMovieBackdropListLiveData(movieId: Int): LiveData<List<Backdrop>> {
+        fetchMovieBackdropList(movieId)
+        return movieBackdropListLiveData
+    }
+
+    private fun fetchMovieBackdropList(movieId: Int) {
+        movieServiceProvider.movieService.getMovieImages(movieId).enqueue(object :
+            Callback<Image> {
+            override fun onFailure(call: Call<Image>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onResponse(call: Call<Image>, response: Response<Image>) {
+                movieBackdropListLiveData.postValue(response.body()!!.backdrops)
             }
         })
     }

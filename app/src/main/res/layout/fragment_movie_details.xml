@@ -205,6 +205,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin16dp"
             android:orientation="horizontal"
+            tools:listitem="@layout/item_media"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/textView_fixed_media"

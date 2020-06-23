@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
@@ -22,7 +21,8 @@ import java.text.SimpleDateFormat
  */
 class MovieDetailsFragment : Fragment() {
 
-    private val adapter = CastAdapter()
+    private val castAdapter = CastAdapter()
+    private val mediaAdapter = MediaAdapter()
     private val movieDetailsViewModel: MovieDetailsViewModel by viewModels()
 
     private lateinit var binding: FragmentMovieDetailsBinding
@@ -56,10 +56,11 @@ class MovieDetailsFragment : Fragment() {
 
             setMovieDetails(movieId)
             setMovieCast(movieId)
+            setMovieMedia(movieId)
         }
     }
 
-    private fun setMovieDetails(movieId: Int){
+    private fun setMovieDetails(movieId: Int) {
         movieDetailsViewModel.getMovieDetailsLiveData(movieId)
             .observe(viewLifecycleOwner, Observer { movieDetails ->
                 // Set poster image
@@ -97,12 +98,19 @@ class MovieDetailsFragment : Fragment() {
             })
     }
 
-    private fun setMovieCast(movieId: Int){
-        binding.recyclerViewMovieCast.adapter = adapter
-
+    private fun setMovieCast(movieId: Int) {
+        binding.recyclerViewMovieCast.adapter = castAdapter
         movieDetailsViewModel.getMovieCastLiveData(movieId)
-            .observe(viewLifecycleOwner, Observer {castList ->
-                adapter.setCastItemList(castList)
+            .observe(viewLifecycleOwner, Observer { castList ->
+                castAdapter.setCastItemList(castList)
+            })
+    }
+
+    private fun setMovieMedia(movieId: Int) {
+        binding.recyclerViewMovieMedia.adapter = mediaAdapter
+        movieDetailsViewModel.getMovieBackdropListLiveData(movieId)
+            .observe(viewLifecycleOwner, Observer { backdropList ->
+                mediaAdapter.setBackdropItemList(backdropList)
             })
     }
 }
