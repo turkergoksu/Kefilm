@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat
  */
 class MovieDetailsFragment : Fragment() {
 
+    private val adapter = CastAdapter()
     private val movieDetailsViewModel: MovieDetailsViewModel by viewModels()
 
     private lateinit var binding: FragmentMovieDetailsBinding
@@ -49,45 +50,59 @@ class MovieDetailsFragment : Fragment() {
         }
     }
 
-    private fun setMovieDetails(){
+    private fun setMovieDetails() {
         if (!requireArguments().isEmpty) {
             val movieId = requireArguments().getInt(Constants.MOVIE_DETAILS_MOVIE_ID_ARG_KEY)
 
-            movieDetailsViewModel.getMovieDetailsLiveData(movieId)
-                .observe(viewLifecycleOwner, Observer { movieDetails ->
-                    // Set poster image
-                    Glide.with(requireContext()).load(
-                        "%s%s".format(
-                            Constants.API_IMAGE_URL,
-                            movieDetails.posterPath
-                        )
-                    ).into(binding.imageViewMoviePoster)
-
-                    // Set release year
-                    val releaseYear = StringUtil.getYearFromDate(
-                        movieDetails.releaseDate,
-                        SimpleDateFormat(Constants.MOVIE_DB_DATE_FORMAT)
-                    )
-                    binding.textViewMovieReleaseYear.text = releaseYear
-
-                    // Set title
-                    binding.textViewMovieTitle.text = movieDetails.title
-
-                    // Set screen time
-                    binding.textViewMovieScreenTime.text = "%s min".format(movieDetails.runtime)
-
-                    // Set budget
-                    binding.textViewMovieBudget.text = "$%s".format(movieDetails.budget)
-
-                    // TODO: 15-Jun-20 Set vote average
-
-                    // Set vote count
-                    binding.textViewMovieVoteCount.text =
-                        "/ %s voted".format(movieDetails.voteCount)
-
-                    // Set overview
-                    binding.textViewMovieOverview.text = movieDetails.overview
-                })
+            setMovieDetails(movieId)
+            setMovieCast(movieId)
         }
+    }
+
+    private fun setMovieDetails(movieId: Int){
+        movieDetailsViewModel.getMovieDetailsLiveData(movieId)
+            .observe(viewLifecycleOwner, Observer { movieDetails ->
+                // Set poster image
+                Glide.with(requireContext()).load(
+                    "%s%s".format(
+                        Constants.API_IMAGE_URL,
+                        movieDetails.posterPath
+                    )
+                ).into(binding.imageViewMoviePoster)
+
+                // Set release year
+                val releaseYear = StringUtil.getYearFromDate(
+                    movieDetails.releaseDate,
+                    SimpleDateFormat(Constants.MOVIE_DB_DATE_FORMAT)
+                )
+                binding.textViewMovieReleaseYear.text = releaseYear
+
+                // Set title
+                binding.textViewMovieTitle.text = movieDetails.title
+
+                // Set screen time
+                binding.textViewMovieScreenTime.text = "%s min".format(movieDetails.runtime)
+
+                // Set budget
+                binding.textViewMovieBudget.text = "$%s".format(movieDetails.budget)
+
+                // TODO: 15-Jun-20 Set vote average
+
+                // Set vote count
+                binding.textViewMovieVoteCount.text =
+                    "/ %s voted".format(movieDetails.voteCount)
+
+                // Set overview
+                binding.textViewMovieOverview.text = movieDetails.overview
+            })
+    }
+
+    private fun setMovieCast(movieId: Int){
+        binding.recyclerViewMovieCast.adapter = adapter
+
+        movieDetailsViewModel.getMovieCastLiveData(movieId)
+            .observe(viewLifecycleOwner, Observer {castList ->
+                adapter.setCastItemList(castList)
+            })
     }
 }

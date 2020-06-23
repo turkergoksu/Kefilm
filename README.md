@@ -1,23 +1,30 @@
-# Kefilm 🎬
-## 📝 About
+# 🎬Kefilm 
+## 📝About
 **Kefilm** is a movie app to learn and practice Modern Android development tools. Movie data provided by [The Movie Database (TMDb)](https://www.themoviedb.org/) API.
+
+To run the app you need to get your own API key from [The Movie Database (TMDb)](https://www.themoviedb.org/). Then you need to change the line as indicated below in `app/src/main/cpp/api-keys.cpp`  file.
+```cpp
+std::string movieDbApiKey = "YOUR_API_KEY_GOES_HERE";
+```
+
 + Android 6.0+ (>23)
 
-## 🌟 Todos
+## 🌟Todos
 #### 🚩 Critical
 + Write a custom view library to show movie rate with percentage.
 + Add TMDb logo to images.
 
-#### 💎 Would Nice
+#### 💎Would Nice
 + Light/dark theme support 🌗.
 + Offline support ⚫.
 + Try to achieve 60 FPS for UpcomingFragment (Maybe research on Glide caching might work?).
 + Try to achieve at least 30+ FPS for TopRatedFragment (Maybe need to remove upper items as user scroll downs? Needs better paging).
 + Work on swipe between upcoming and topRated fragments(Upcoming has horizontal RecyclerView so it might be tricky).
-+ Hide the top status bar of device (Which means, run app in fullscreen).
++ Hide the status bar of device (Which means, run app in fullscreen).
 + Add a transition when movie details comes up (Probably based on poster image).
++ Hide top bar when user swipes down. Show top bar when swipes up (Only in TopRated and Popular).
 
-## ✨ Latest Screenshots
+## ✨Latest Screenshots
 | Upcoming | Top Rated |  Popular |
 |:-:|:-:|:-:|
 | ![U](screenshots/latest/upcoming.gif?raw=true) | ![T](screenshots/latest/toprated.gif?raw=true) | ![P]() |
@@ -26,7 +33,7 @@
 | | Search | |
 | | ![S]() | |
 
-## ✨ Prototype Screenshots
+## ✨Prototype Screenshots
 Designs made with [Figma](https://www.figma.com).
 
 | Upcoming | Top Rated |  Popular |
@@ -37,7 +44,7 @@ Designs made with [Figma](https://www.figma.com).
 | | Search | |
 | | ![S](screenshots/prototype/p_search.png?raw=true) | |
 
-## 🛠️ Building With 
+## 🛠️Building With 
 + [Retrofit](https://github.com/square/retrofit) - Type-safe HTTP client for Android.
 + [Gson](https://github.com/google/gson) - A Java serialization/deserialization library to convert Java Objects into JSON and back.
 + [Glide](https://github.com/bumptech/glide) - An image loading and caching library for Android focused on smooth scrolling

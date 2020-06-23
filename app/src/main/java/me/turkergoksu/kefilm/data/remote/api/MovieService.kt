@@ -1,6 +1,7 @@
 package me.turkergoksu.kefilm.data.remote.api
 
 import me.turkergoksu.kefilm.model.genre.GenreResponseModel
+import me.turkergoksu.kefilm.model.moviedetails.Cast
 import me.turkergoksu.kefilm.model.moviedetails.MovieDetails
 import me.turkergoksu.kefilm.model.toprated.TopRatedResponseModel
 import me.turkergoksu.kefilm.model.upcoming.UpcomingResponseModel
@@ -16,14 +17,17 @@ import retrofit2.http.Query
 interface MovieService {
 
     @GET("/3/movie/upcoming")
-    fun getUpcomingMovies() : Call<UpcomingResponseModel>
+    fun getUpcomingMovies(): Call<UpcomingResponseModel>
 
     @GET("/3/movie/top_rated")
-    fun getTopRatedMovies(@Query("page") page: Int) : Call<TopRatedResponseModel>
+    fun getTopRatedMovies(@Query("page") page: Int): Call<TopRatedResponseModel>
 
     @GET("/3/genre/movie/list")
-    fun getGenres() : Call<GenreResponseModel>
+    fun getGenres(): Call<GenreResponseModel>
 
     @GET("/3/movie/{movie_id}")
-    fun getMovieDetails(@Path("movie_id") movieId: Int) : Call<MovieDetails>
+    fun getMovieDetails(@Path("movie_id") movieId: Int): Call<MovieDetails>
+
+    @GET("/3/movie/{movie_id}/credits")
+    fun getMovieCast(@Path("movie_id") movieId: Int): Call<Cast>
 }
