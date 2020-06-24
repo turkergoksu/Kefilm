@@ -185,7 +185,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/textView_fixed_cast"
-            app:layout_constraintTop_toBottomOf="@id/textView_fixed_cast" />
+            app:layout_constraintTop_toBottomOf="@id/textView_fixed_cast"
+            tools:listitem="@layout/item_movie_details_cast" />
 
         <TextView
             android:id="@+id/textView_fixed_media"
@@ -209,7 +210,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/textView_fixed_media"
-            app:layout_constraintTop_toBottomOf="@id/textView_fixed_media" />
+            app:layout_constraintTop_toBottomOf="@id/textView_fixed_media"
+            tools:listitem="@layout/item_media" />
 
         <TextView
             android:id="@+id/textView_fixed_similar_movies"
@@ -233,7 +235,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/textView_fixed_similar_movies"
-            app:layout_constraintTop_toBottomOf="@id/textView_fixed_similar_movies" />
+            app:layout_constraintTop_toBottomOf="@id/textView_fixed_similar_movies"
+            tools:listitem="@layout/item_movie_details_similar_movie" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

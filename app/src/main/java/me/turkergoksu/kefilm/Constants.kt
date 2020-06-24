@@ -19,6 +19,7 @@ object Constants {
 
     // Movie Details
     const val MOVIE_DETAILS_MOVIE_ID_ARG_KEY = "movieId"
+    const val MOVIE_DETAILS_MEDIA_ITEM_CORNER_RADIUS = 32
 
     const val APP_DEFAULT_BACKGROUND_COLOR = R.color.defaultBackground
 
