@@ -29,7 +29,7 @@ std::string movieDbApiKey = "YOUR_API_KEY_GOES_HERE";
 |:-:|:-:|:-:|
 | ![U](screenshots/latest/upcoming.gif?raw=true) | ![T](screenshots/latest/toprated.gif?raw=true) | ![P]() |
 | Movie Details | Media |  People Details |
-| ![M]() | ![Me]() | ![Pe]() |
+| ![M](screenshots/latest/movie_details.gif?raw=true) | ![Me]() | ![Pe]() |
 | | Search | |
 | | ![S]() | |
 
