@@ -20,6 +20,7 @@ class MovieDetailsViewModel : ViewModel() {
     private val movieDetailsLiveData = MutableLiveData<MovieDetails>()
     private val movieCastLiveData = MutableLiveData<List<CastItem>>()
     private val movieBackdropListLiveData = MutableLiveData<List<Backdrop>>()
+    private val movieSimilarMovieListLiveData = MutableLiveData<List<SimilarMovie>>()
 
     fun getMovieDetailsLiveData(movieId: Int): LiveData<MovieDetails> {
         fetchMovieDetails(movieId)
@@ -71,6 +72,27 @@ class MovieDetailsViewModel : ViewModel() {
 
             override fun onResponse(call: Call<Image>, response: Response<Image>) {
                 movieBackdropListLiveData.postValue(response.body()!!.backdrops)
+            }
+        })
+    }
+
+    fun getSimilarMovieListLiveData(movieId: Int): LiveData<List<SimilarMovie>> {
+        fetchSimilarMovieList(movieId)
+        return movieSimilarMovieListLiveData
+    }
+
+    private fun fetchSimilarMovieList(movieId: Int) {
+        movieServiceProvider.movieService.getSimilarMovies(movieId).enqueue(object :
+            Callback<SimilarMovieResponseModel> {
+            override fun onFailure(call: Call<SimilarMovieResponseModel>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onResponse(
+                call: Call<SimilarMovieResponseModel>,
+                response: Response<SimilarMovieResponseModel>
+            ) {
+                movieSimilarMovieListLiveData.postValue(response.body()!!.results)
             }
         })
     }

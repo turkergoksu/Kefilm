@@ -23,6 +23,7 @@ class MovieDetailsFragment : Fragment() {
 
     private val castAdapter = CastAdapter()
     private val mediaAdapter = MediaAdapter()
+    private val similarMoviesAdapter = SimilarMoviesAdapter()
     private val movieDetailsViewModel: MovieDetailsViewModel by viewModels()
 
     private lateinit var binding: FragmentMovieDetailsBinding
@@ -57,6 +58,7 @@ class MovieDetailsFragment : Fragment() {
             setMovieDetails(movieId)
             setMovieCast(movieId)
             setMovieMedia(movieId)
+            setMovieSimilarMovies(movieId)
         }
     }
 
@@ -111,6 +113,14 @@ class MovieDetailsFragment : Fragment() {
         movieDetailsViewModel.getMovieBackdropListLiveData(movieId)
             .observe(viewLifecycleOwner, Observer { backdropList ->
                 mediaAdapter.setBackdropItemList(backdropList)
+            })
+    }
+
+    private fun setMovieSimilarMovies(movieId: Int) {
+        binding.recyclerViewSimilarMovies.adapter = similarMoviesAdapter
+        movieDetailsViewModel.getSimilarMovieListLiveData(movieId)
+            .observe(viewLifecycleOwner, Observer { similarMovieList ->
+                similarMoviesAdapter.setSimilarMovieList(similarMovieList)
             })
     }
 }

@@ -4,6 +4,7 @@ import me.turkergoksu.kefilm.model.genre.GenreResponseModel
 import me.turkergoksu.kefilm.model.moviedetails.Cast
 import me.turkergoksu.kefilm.model.moviedetails.Image
 import me.turkergoksu.kefilm.model.moviedetails.MovieDetails
+import me.turkergoksu.kefilm.model.moviedetails.SimilarMovieResponseModel
 import me.turkergoksu.kefilm.model.toprated.TopRatedResponseModel
 import me.turkergoksu.kefilm.model.upcoming.UpcomingResponseModel
 import retrofit2.Call
@@ -34,4 +35,7 @@ interface MovieService {
 
     @GET("/3/movie/{movie_id}/images")
     fun getMovieImages(@Path("movie_id") movieId: Int): Call<Image>
+
+    @GET("/3/movie/{movie_id}/similar")
+    fun getSimilarMovies(@Path("movie_id") movieId: Int): Call<SimilarMovieResponseModel>
 }
