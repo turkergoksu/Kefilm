@@ -14,24 +14,13 @@ import me.turkergoksu.kefilm.R
 import me.turkergoksu.kefilm.databinding.ItemUpcomingMovieBinding
 import me.turkergoksu.kefilm.model.upcoming.UpcomingMovieItem
 import me.turkergoksu.kefilm.utils.StringUtil
-import java.text.SimpleDateFormat
 
 /**
  * Created by turkergoksu on 30-Mar-20, 8:19 PM
  */
 
-class UpcomingMovieAdapter :
+class UpcomingMovieAdapter(private val upcomingMovieList: List<UpcomingMovieItem>) :
     RecyclerView.Adapter<UpcomingMovieAdapter.MovieItemViewHolder>() {
-
-    private val upcomingMovieList = arrayListOf<UpcomingMovieItem>()
-
-    fun setUpcomingMovieList(upcomingMovieList: List<UpcomingMovieItem>?) {
-        if (upcomingMovieList != null) {
-            this.upcomingMovieList.clear()
-            this.upcomingMovieList.addAll(upcomingMovieList)
-            notifyDataSetChanged()
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder =
         MovieItemViewHolder.create(parent)
@@ -64,8 +53,8 @@ class UpcomingMovieAdapter :
 
             binding.textViewMovieReleaseDate.text = StringUtil.formatDate(
                 upcomingMovie.releaseDate,
-                SimpleDateFormat(Constants.MOVIE_DB_DATE_FORMAT),
-                SimpleDateFormat(Constants.UPCOMING_MOVIE_DATE_FORMAT)
+                Constants.MOVIE_DB_DATE_FORMAT,
+                Constants.UPCOMING_MOVIE_DATE_FORMAT
             )
 
             binding.textViewMovieOverview.text = upcomingMovie.overview

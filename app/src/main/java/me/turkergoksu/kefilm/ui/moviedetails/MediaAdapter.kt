@@ -14,16 +14,8 @@ import me.turkergoksu.kefilm.model.moviedetails.Backdrop
  * Created by turkergoksu on 23-Jun-20, 10:48 PM
  */
 
-class MediaAdapter :
-        RecyclerView.Adapter<MediaAdapter.MediaItemViewHolder>() {
-
-    private val backdropItemList = arrayListOf<Backdrop>()
-
-    fun setBackdropItemList(backdropItemList: List<Backdrop>){
-        this.backdropItemList.clear()
-        this.backdropItemList.addAll(backdropItemList)
-        notifyDataSetChanged()
-    }
+class MediaAdapter(private val backdropItemList: List<Backdrop>) :
+    RecyclerView.Adapter<MediaAdapter.MediaItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MediaItemViewHolder =
         MediaItemViewHolder.create(parent)
@@ -34,9 +26,9 @@ class MediaAdapter :
         holder.bind(backdropItemList[position])
 
     class MediaItemViewHolder(private val binding: ItemMediaBinding) :
-            RecyclerView.ViewHolder(binding.root) {
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(backdropItem: Backdrop){
+        fun bind(backdropItem: Backdrop) {
             Glide.with(binding.root.context).load(
                 "%s%s".format(
                     Constants.API_IMAGE_URL,

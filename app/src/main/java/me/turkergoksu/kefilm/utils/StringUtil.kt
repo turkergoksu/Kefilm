@@ -9,19 +9,19 @@ import java.text.SimpleDateFormat
 
 object StringUtil {
 
+    @SuppressLint("SimpleDateFormat")
     fun formatDate(
         dateText: String,
-        oldDateFormat: SimpleDateFormat,
-        newDateFormat: SimpleDateFormat
+        oldDateFormat: String,
+        newDateFormat: String
     ): String {
-        val date = oldDateFormat.parse(dateText)
-        return newDateFormat.format(date)
+        val date = SimpleDateFormat(oldDateFormat).parse(dateText)
+        return SimpleDateFormat(newDateFormat).format(date)
     }
 
     @SuppressLint("SimpleDateFormat")
-    fun getYearFromDate(dateText: String, dateFormat: SimpleDateFormat): String {
-        val date = dateFormat.parse(dateText)
-        val yearDateFormat = SimpleDateFormat("yyyy")
-        return yearDateFormat.format(date)
+    fun getYearFromDate(dateText: String, dateFormat: String): String {
+        val date = SimpleDateFormat(dateFormat).parse(dateText)
+        return SimpleDateFormat("yyyy").format(date)
     }
 }

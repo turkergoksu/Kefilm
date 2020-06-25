@@ -14,7 +14,6 @@ import me.turkergoksu.kefilm.databinding.ItemTopratedMovieBinding
 import me.turkergoksu.kefilm.model.genre.Genre
 import me.turkergoksu.kefilm.model.toprated.TopRatedMovieItem
 import me.turkergoksu.kefilm.utils.StringUtil
-import java.text.SimpleDateFormat
 
 /**
  * Created by turkergoksu on 14-Jun-20, 3:35 AM
@@ -69,7 +68,7 @@ class TopRatedMovieAdapter :
             binding.textViewMovieReleaseYear.text = "(%s)".format(
                 StringUtil.getYearFromDate(
                     topRatedMovie.releaseDate,
-                    SimpleDateFormat(Constants.MOVIE_DB_DATE_FORMAT)
+                    Constants.MOVIE_DB_DATE_FORMAT
                 )
             )
 

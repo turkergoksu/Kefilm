@@ -18,7 +18,7 @@ import me.turkergoksu.kefilm.model.upcoming.UpcomingMovieItem
  */
 class UpcomingFragment : Fragment() {
 
-    private val adapter = UpcomingMovieAdapter()
+    private lateinit var adapter : UpcomingMovieAdapter
     private val upcomingViewModel: UpcomingViewModel by viewModels()
     private lateinit var scrollListener: CustomScrollListener
     internal lateinit var onUpcomingFragmentEventListener: OnUpcomingFragmentEventListener
@@ -44,8 +44,6 @@ class UpcomingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.recyclerViewUpcomingMovies.adapter = adapter
-
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.recyclerViewUpcomingMovies)
 
@@ -56,6 +54,12 @@ class UpcomingFragment : Fragment() {
 
         upcomingViewModel.getUpcomingMovieListLiveData()
             .observe(viewLifecycleOwner, Observer { upcomingMovieList ->
+                // Initialize adapter
+                adapter = UpcomingMovieAdapter(upcomingMovieList)
+
+                // Set adapter to RecyclerView
+                binding.recyclerViewUpcomingMovies.adapter = adapter
+
                 this.upcomingMovieList = upcomingMovieList
 
                 // Set listener's movie list
@@ -63,9 +67,6 @@ class UpcomingFragment : Fragment() {
 
                 // Set background image for first item
                 onUpcomingFragmentEventListener.onItemChange(upcomingMovieList.first().posterPath)
-
-                // Set adapter's movie list
-                adapter.setUpcomingMovieList(upcomingMovieList)
 
                 // Hide progress bar
                 binding.progressBarLoading.hide()

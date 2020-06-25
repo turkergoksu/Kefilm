@@ -14,16 +14,8 @@ import me.turkergoksu.kefilm.model.moviedetails.SimilarMovie
  * Created by turkergoksu on 24-Jun-20, 6:19 PM
  */
 
-class SimilarMoviesAdapter :
+class SimilarMoviesAdapter(private val similarMovieList: List<SimilarMovie>) :
     RecyclerView.Adapter<SimilarMoviesAdapter.SimilarMovieItemViewHolder>() {
-
-    private val similarMovieList = arrayListOf<SimilarMovie>()
-
-    fun setSimilarMovieList(similarMovieList: List<SimilarMovie>) {
-        this.similarMovieList.clear()
-        this.similarMovieList.addAll(similarMovieList)
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimilarMovieItemViewHolder =
         SimilarMovieItemViewHolder.create(parent)
