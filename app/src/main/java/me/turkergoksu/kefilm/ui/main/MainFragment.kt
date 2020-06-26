@@ -10,6 +10,7 @@ import me.turkergoksu.kefilm.Constants
 
 import me.turkergoksu.kefilm.R
 import me.turkergoksu.kefilm.databinding.FragmentMainBinding
+import me.turkergoksu.kefilm.ui.popular.PopularFragment
 import me.turkergoksu.kefilm.ui.toprated.TopRatedFragment
 import me.turkergoksu.kefilm.ui.upcoming.UpcomingFragment
 import me.turkergoksu.kefilm.utils.ImageLoadingUtil
@@ -65,6 +66,20 @@ class MainFragment : Fragment() {
                     }
                 }
         } else if (childFragment is TopRatedFragment) {
+            childFragment.onUpcomingFragmentEventListener =
+                object : OnUpcomingFragmentEventListener {
+                    override fun onItemChange(posterPath: String) {
+                        TODO("Not yet implemented")
+                    }
+
+                    override fun onUpcomingFragmentStop() {
+                        ImageLoadingUtil.resetMainFragmentBackground(
+                            context!!,
+                            binding.imageViewMainFragment
+                        )
+                    }
+                }
+        } else if (childFragment is PopularFragment) {
             childFragment.onUpcomingFragmentEventListener =
                 object : OnUpcomingFragmentEventListener {
                     override fun onItemChange(posterPath: String) {

@@ -5,6 +5,7 @@ import me.turkergoksu.kefilm.model.moviedetails.Cast
 import me.turkergoksu.kefilm.model.moviedetails.Image
 import me.turkergoksu.kefilm.model.moviedetails.MovieDetails
 import me.turkergoksu.kefilm.model.moviedetails.SimilarMovieResponseModel
+import me.turkergoksu.kefilm.model.popular.PopularResponseModel
 import me.turkergoksu.kefilm.model.toprated.TopRatedResponseModel
 import me.turkergoksu.kefilm.model.upcoming.UpcomingResponseModel
 import retrofit2.Call
@@ -38,4 +39,7 @@ interface MovieService {
 
     @GET("/3/movie/{movie_id}/similar")
     fun getSimilarMovies(@Path("movie_id") movieId: Int): Call<SimilarMovieResponseModel>
+
+    @GET("/3/movie/popular")
+    fun getPopularMovies(@Query("page") page: Int): Call<PopularResponseModel>
 }

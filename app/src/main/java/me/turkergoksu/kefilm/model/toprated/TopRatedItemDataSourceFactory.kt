@@ -10,7 +10,7 @@ import androidx.paging.DataSource
 class TopRatedItemDataSourceFactory(val mutableLiveData: MutableLiveData<TopRatedItemDataSource>) :
     DataSource.Factory<Int, TopRatedMovieItem>() {
 
-    lateinit var topRatedItemDataSource: TopRatedItemDataSource
+    private lateinit var topRatedItemDataSource: TopRatedItemDataSource
 
     override fun create(): DataSource<Int, TopRatedMovieItem> {
         topRatedItemDataSource = TopRatedItemDataSource()

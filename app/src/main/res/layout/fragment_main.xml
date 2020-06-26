@@ -25,7 +25,7 @@
         app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/TabLayoutCustomFontStyle"
         app:tabTextColor="@color/light_gray"
-        app:tabUnboundedRipple="true">
+        app:tabUnboundedRipple="false">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

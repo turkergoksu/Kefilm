@@ -12,16 +12,8 @@ import me.turkergoksu.kefilm.model.moviedetails.CastItem
  * Created by turkergoksu on 23-Jun-20, 4:24 PM
  */
 
-class CastAdapter :
+class CastAdapter(private val castItemList: List<CastItem>) :
     RecyclerView.Adapter<CastAdapter.CastItemViewHolder>() {
-
-    private val castItemList = arrayListOf<CastItem>()
-
-    fun setCastItemList(castItemList: List<CastItem>) {
-        this.castItemList.clear()
-        this.castItemList.addAll(castItemList)
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CastItemViewHolder =
         CastItemViewHolder.create(parent)
@@ -41,7 +33,7 @@ class CastAdapter :
                         Constants.API_IMAGE_URL,
                         castItem.profilePath
                     )
-                ).into(binding.imageViewCastPhoto)
+                ).circleCrop().into(binding.imageViewCastPhoto)
             }
 
             binding.textViewCastName.text = castItem.name

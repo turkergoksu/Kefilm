@@ -27,7 +27,7 @@ std::string movieDbApiKey = "YOUR_API_KEY_GOES_HERE";
 ## ✨Latest Screenshots
 | Upcoming | Top Rated |  Popular |
 |:-:|:-:|:-:|
-| ![U](screenshots/latest/upcoming.gif?raw=true) | ![T](screenshots/latest/toprated.gif?raw=true) | ![P]() |
+| ![U](screenshots/latest/upcoming.gif?raw=true) | ![T](screenshots/latest/toprated.gif?raw=true) | ![P](screenshots/latest/popular.gif?raw=true) |
 | Movie Details | Media |  People Details |
 | ![M](screenshots/latest/movie_details.gif?raw=true) | ![Me]() | ![Pe]() |
 | | Search | |

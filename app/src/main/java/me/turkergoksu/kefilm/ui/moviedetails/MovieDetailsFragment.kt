@@ -12,7 +12,6 @@ import com.bumptech.glide.Glide
 import me.turkergoksu.kefilm.Constants
 import me.turkergoksu.kefilm.databinding.FragmentMovieDetailsBinding
 import me.turkergoksu.kefilm.utils.StringUtil
-import java.text.SimpleDateFormat
 
 /**
  * A simple [Fragment] subclass.
@@ -21,12 +20,14 @@ import java.text.SimpleDateFormat
  */
 class MovieDetailsFragment : Fragment() {
 
-    private val castAdapter = CastAdapter()
-    private val mediaAdapter = MediaAdapter()
-    private val similarMoviesAdapter = SimilarMoviesAdapter()
+    private lateinit var castAdapter: CastAdapter
+    private lateinit var mediaAdapter: MediaAdapter
+    private lateinit var similarMoviesAdapter: SimilarMoviesAdapter
     private val movieDetailsViewModel: MovieDetailsViewModel by viewModels()
 
     private lateinit var binding: FragmentMovieDetailsBinding
+
+    private var movieId = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +41,7 @@ class MovieDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setMovieDetails()
+        setMovieDetailsFragment()
 
         binding.imageViewBackIcon.setOnClickListener {
             Navigation.findNavController(it).popBackStack()
@@ -51,18 +52,18 @@ class MovieDetailsFragment : Fragment() {
         }
     }
 
-    private fun setMovieDetails() {
+    private fun setMovieDetailsFragment() {
         if (!requireArguments().isEmpty) {
-            val movieId = requireArguments().getInt(Constants.MOVIE_DETAILS_MOVIE_ID_ARG_KEY)
+            movieId = requireArguments().getInt(Constants.MOVIE_DETAILS_MOVIE_ID_ARG_KEY)
 
-            setMovieDetails(movieId)
-            setMovieCast(movieId)
-            setMovieMedia(movieId)
-            setMovieSimilarMovies(movieId)
+            setMovieDetails()
+            setMovieCast()
+            setMovieMedia()
+            setMovieSimilarMovies()
         }
     }
 
-    private fun setMovieDetails(movieId: Int) {
+    private fun setMovieDetails() {
         movieDetailsViewModel.getMovieDetailsLiveData(movieId)
             .observe(viewLifecycleOwner, Observer { movieDetails ->
                 // Set poster image
@@ -76,7 +77,7 @@ class MovieDetailsFragment : Fragment() {
                 // Set release year
                 val releaseYear = StringUtil.getYearFromDate(
                     movieDetails.releaseDate,
-                    SimpleDateFormat(Constants.MOVIE_DB_DATE_FORMAT)
+                    Constants.MOVIE_DB_DATE_FORMAT
                 )
                 binding.textViewMovieReleaseYear.text = releaseYear
 
@@ -100,27 +101,27 @@ class MovieDetailsFragment : Fragment() {
             })
     }
 
-    private fun setMovieCast(movieId: Int) {
-        binding.recyclerViewMovieCast.adapter = castAdapter
+    private fun setMovieCast() {
         movieDetailsViewModel.getMovieCastLiveData(movieId)
             .observe(viewLifecycleOwner, Observer { castList ->
-                castAdapter.setCastItemList(castList)
+                castAdapter = CastAdapter(castList)
+                binding.recyclerViewMovieCast.adapter = castAdapter
             })
     }
 
-    private fun setMovieMedia(movieId: Int) {
-        binding.recyclerViewMovieMedia.adapter = mediaAdapter
+    private fun setMovieMedia() {
         movieDetailsViewModel.getMovieBackdropListLiveData(movieId)
             .observe(viewLifecycleOwner, Observer { backdropList ->
-                mediaAdapter.setBackdropItemList(backdropList)
+                mediaAdapter = MediaAdapter(backdropList)
+                binding.recyclerViewMovieMedia.adapter = mediaAdapter
             })
     }
 
-    private fun setMovieSimilarMovies(movieId: Int) {
-        binding.recyclerViewSimilarMovies.adapter = similarMoviesAdapter
+    private fun setMovieSimilarMovies() {
         movieDetailsViewModel.getSimilarMovieListLiveData(movieId)
             .observe(viewLifecycleOwner, Observer { similarMovieList ->
-                similarMoviesAdapter.setSimilarMovieList(similarMovieList)
+                similarMoviesAdapter = SimilarMoviesAdapter(similarMovieList)
+                binding.recyclerViewSimilarMovies.adapter = similarMoviesAdapter
             })
     }
 }
