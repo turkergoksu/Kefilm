@@ -33,7 +33,7 @@ class CastAdapter(private val castItemList: List<CastItem>) :
                         Constants.API_IMAGE_URL,
                         castItem.profilePath
                     )
-                ).into(binding.imageViewCastPhoto)
+                ).circleCrop().into(binding.imageViewCastPhoto)
             }
 
             binding.textViewCastName.text = castItem.name

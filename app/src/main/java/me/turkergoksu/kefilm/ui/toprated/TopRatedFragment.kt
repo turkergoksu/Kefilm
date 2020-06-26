@@ -58,9 +58,9 @@ class TopRatedFragment : Fragment() {
         })
     }
 
-    fun setOnUpcomingFragmentEventListener(onUpcomingFragmentEventListener: OnUpcomingFragmentEventListener) {
-        this.onUpcomingFragmentEventListener = onUpcomingFragmentEventListener
-    }
+//    fun setOnUpcomingFragmentEventListener(onUpcomingFragmentEventListener: OnUpcomingFragmentEventListener) {
+//        this.onUpcomingFragmentEventListener = onUpcomingFragmentEventListener
+//    }
 
     override fun onResume() {
         super.onResume()

@@ -1,6 +1,5 @@
 package me.turkergoksu.kefilm.ui.toprated
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -44,7 +43,6 @@ class TopRatedMovieAdapter :
     class MovieItemViewHolder(private val binding: ItemTopratedMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        @SuppressLint("SimpleDateFormat")
         fun bind(
             topRatedMovie: TopRatedMovieItem?,
             position: Int,
