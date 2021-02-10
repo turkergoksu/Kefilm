@@ -70,6 +70,9 @@ class TopRatedMovieAdapter :
                 )
             )
 
+            // Set movie average score
+            binding.percentageViewMovieAvg.setPercentage((topRatedMovie.voteAverage * 10).toInt())
+
             // Set movie's genres
             val genreText = StringBuilder()
             for (genreId in topRatedMovie.genreIds) {
@@ -80,6 +83,10 @@ class TopRatedMovieAdapter :
 
             }
             binding.textViewMovieGenres.text = genreText.toString()
+
+            // Set movie runtime text
+            // TODO: 11-Feb-21
+//            binding.textViewMovieRuntime.text = "(%s)".format()
 
             // Set movie's overview
             binding.textViewMovieOverview.text = topRatedMovie.overview

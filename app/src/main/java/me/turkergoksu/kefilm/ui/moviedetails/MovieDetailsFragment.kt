@@ -90,7 +90,8 @@ class MovieDetailsFragment : Fragment() {
                 // Set budget
                 binding.textViewMovieBudget.text = "$%s".format(movieDetails.budget)
 
-                // TODO: 15-Jun-20 Set vote average
+                // Set vote average
+                binding.percentageViewMovieAvg.setPercentage((movieDetails.voteAverage * 10).toInt())
 
                 // Set vote count
                 binding.textViewMovieVoteCount.text =
