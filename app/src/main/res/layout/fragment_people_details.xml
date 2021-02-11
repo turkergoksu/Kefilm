@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.peopledetails.PeopleDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView_back_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin16dp"
+            android:layout_marginTop="@dimen/margin8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="@dimen/padding16dp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_people_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin16dp"
+            android:fontFamily="@font/montserrat"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@id/imageView_back_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/imageView_back_icon"
+            app:layout_constraintTop_toTopOf="@id/imageView_back_icon"
+            tools:text="@string/dummy_people_name" />
+
+        <ImageView
+            android:id="@+id/imageView_people_photo"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="@id/imageView_back_icon"
+            app:layout_constraintTop_toBottomOf="@id/imageView_back_icon"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            tools:src="@drawable/dummy_actor" />
+
+        <TextView
+            android:id="@+id/textView_fixed_known_for"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin8dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/fixed_known_for"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/imageView_people_photo"
+            app:layout_constraintTop_toTopOf="@id/imageView_people_photo" />
+
+        <TextView
+            android:id="@+id/textView_known_for"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin16dp"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/light_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/textView_fixed_known_for"
+            app:layout_constraintTop_toBottomOf="@id/textView_fixed_known_for"
+            tools:text="Acting" />
+
+        <TextView
+            android:id="@+id/textView_fixed_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="bottom"
+            android:text="@string/fixed_birthday"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/textView_birthday"
+            app:layout_constraintStart_toStartOf="@id/textView_known_for"
+            app:layout_constraintTop_toBottomOf="@id/textView_known_for" />
+
+        <TextView
+            android:id="@+id/textView_birthday"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/light_gray"
+            app:layout_constraintBottom_toTopOf="@id/textView_fixed_place_of_birth"
+            app:layout_constraintEnd_toEndOf="@id/textView_known_for"
+            app:layout_constraintStart_toStartOf="@id/textView_fixed_birthday"
+            app:layout_constraintTop_toBottomOf="@id/textView_fixed_birthday"
+            tools:text="30 Apr 1985" />
+
+        <TextView
+            android:id="@+id/textView_fixed_place_of_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/fixed_place_of_birth"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/textView_place_of_birth"
+            app:layout_constraintStart_toStartOf="@id/textView_birthday" />
+
+        <TextView
+            android:id="@+id/textView_place_of_birth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/light_gray"
+            app:layout_constraintBottom_toBottomOf="@id/imageView_people_photo"
+            app:layout_constraintEnd_toEndOf="@id/textView_birthday"
+            app:layout_constraintStart_toStartOf="@id/textView_fixed_place_of_birth"
+            tools:text="Rosh Ha'ayin, Israel" />
+
+        <TextView
+            android:id="@+id/textView_people_bio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin8dp"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/light_gray"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/textView_people_name"
+            app:layout_constraintStart_toStartOf="@id/imageView_people_photo"
+            app:layout_constraintTop_toBottomOf="@id/imageView_people_photo"
+            tools:text="@string/dummy_people_bio" />
+
+        <TextView
+            android:id="@+id/textView_fixed_media"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin8dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/media"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textView_people_bio"
+            app:layout_constraintTop_toBottomOf="@id/textView_people_bio" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_people_media"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin4dp"
+            android:layout_marginEnd="@dimen/margin16dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/textView_fixed_media"
+            app:layout_constraintTop_toBottomOf="@id/textView_fixed_media"
+            tools:listitem="@layout/item_media" />
+
+        <TextView
+            android:id="@+id/textView_fixed_known_movies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin8dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/fixed_known_for"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/recyclerView_people_media"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView_people_media" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_known_movies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin4dp"
+            android:layout_marginEnd="@dimen/margin16dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/textView_fixed_known_movies"
+            app:layout_constraintTop_toBottomOf="@id/textView_fixed_known_movies"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_known_movies" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+

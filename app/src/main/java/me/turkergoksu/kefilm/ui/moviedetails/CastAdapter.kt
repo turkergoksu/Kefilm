@@ -1,10 +1,14 @@
 package me.turkergoksu.kefilm.ui.moviedetails
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import me.turkergoksu.kefilm.Constants
+import me.turkergoksu.kefilm.R
 import me.turkergoksu.kefilm.databinding.ItemMovieDetailsCastBinding
 import me.turkergoksu.kefilm.model.moviedetails.CastItem
 
@@ -37,6 +41,17 @@ class CastAdapter(private val castItemList: List<CastItem>) :
             }
 
             binding.textViewCastName.text = castItem.name
+
+            binding.imageViewCastPhoto.setOnClickListener {
+                val args = Bundle()
+                args.putInt(Constants.PEOPLE_DETAILS_PEOPLE_ID_ARG_KEY, castItem.id)
+
+                Navigation.findNavController(it).navigate(R.id.peopleDetailsFragment, args)
+            }
+
+            binding.root.setOnClickListener {
+                binding.imageViewCastPhoto.performClick()
+            }
         }
 
         companion object {

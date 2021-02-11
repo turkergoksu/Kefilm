@@ -51,17 +51,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView_search_icon"
-        android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:padding="@dimen/padding16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tabLayout"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_search_24dp" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

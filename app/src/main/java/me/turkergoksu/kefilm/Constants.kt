@@ -26,4 +26,7 @@ object Constants {
 
     const val APP_DEFAULT_BACKGROUND_COLOR = R.color.defaultBackground
 
+    // People Details
+    const val PEOPLE_DETAILS_PEOPLE_ID_ARG_KEY = "peopleId"
+    const val PEOPLE_DETAILS_DATE_FORMAT = "dd MMM yyyy"
 }

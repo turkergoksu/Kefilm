@@ -12,6 +12,12 @@
     <string name="dummy_movie_release_year">(2019)</string>
     <string name="dummy_movie_runtime">120 min</string>
     <string name="dummy_movie_genres">Action Drama Crime</string>
+    <string name="dummy_people_name">Gal Gadot</string>
+    <string name="fixed_place_of_birth">Place of Birth</string>
+    <string name="fixed_birthday">Birthday</string>
+    <string name="fixed_known_for">Known For</string>
+    <string name="dummy_people_bio">Gal Gadot (born: April 30, 1985) is an Israeli actress and model. She was born in Rosh Ha\'ayin, Israel, to an Ashkenazi Jewish family (from Poland, Austria, Germany, and Czechoslovakia). She served in the IDF for two years, and won the Miss Israel title in 2004.</string>
+    <string name="media">Media</string>
 
     <string-array name="tab_titles">
         <item>Upcoming</item>

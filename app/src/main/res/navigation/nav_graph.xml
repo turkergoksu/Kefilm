@@ -30,4 +30,9 @@
         android:name="me.turkergoksu.kefilm.ui.toprated.TopRatedFragment"
         android:label="fragment_top_rated"
         tools:layout="@layout/fragment_top_rated" />
+    <fragment
+        android:id="@+id/peopleDetailsFragment"
+        android:name="me.turkergoksu.kefilm.ui.peopledetails.PeopleDetailsFragment"
+        android:label="fragment_people_details"
+        tools:layout="@layout/fragment_people_details" />
 </navigation>
