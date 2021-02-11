@@ -14,7 +14,7 @@ import me.turkergoksu.kefilm.model.moviedetails.Backdrop
  * Created by turkergoksu on 23-Jun-20, 10:48 PM
  */
 
-class MediaAdapter(private val backdropItemList: List<Backdrop>) :
+class MediaAdapter(private val backdropItemList: List<Backdrop>, private val clickCallback: (Int) -> Unit) :
     RecyclerView.Adapter<MediaAdapter.MediaItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MediaItemViewHolder =
@@ -23,12 +23,12 @@ class MediaAdapter(private val backdropItemList: List<Backdrop>) :
     override fun getItemCount(): Int = backdropItemList.size
 
     override fun onBindViewHolder(holder: MediaItemViewHolder, position: Int) =
-        holder.bind(backdropItemList[position])
+        holder.bind(backdropItemList[position], clickCallback, position)
 
     class MediaItemViewHolder(private val binding: ItemMediaBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(backdropItem: Backdrop) {
+        fun bind(backdropItem: Backdrop, clickCallback: (Int) -> Unit, position: Int) {
             Glide.with(binding.root.context).load(
                 "%s%s".format(
                     Constants.API_IMAGE_URL,
@@ -42,6 +42,10 @@ class MediaAdapter(private val backdropItemList: List<Backdrop>) :
                     )
                 )
             ).into(binding.imageViewMedia)
+
+            binding.imageViewMedia.setOnClickListener {
+                clickCallback.invoke(position)
+            }
         }
 
         companion object {

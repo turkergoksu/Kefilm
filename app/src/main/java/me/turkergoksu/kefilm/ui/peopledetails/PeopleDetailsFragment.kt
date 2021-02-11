@@ -7,10 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import me.turkergoksu.kefilm.Constants
+import me.turkergoksu.kefilm.R
 import me.turkergoksu.kefilm.databinding.FragmentPeopleDetailsBinding
+import me.turkergoksu.kefilm.ui.media.SharedViewModel
+import me.turkergoksu.kefilm.ui.moviedetails.MediaAdapter
 import me.turkergoksu.kefilm.utils.StringUtil
 
 class PeopleDetailsFragment : Fragment() {
@@ -61,7 +66,14 @@ class PeopleDetailsFragment : Fragment() {
     private fun setPeopleMedia() {
         peopleDetailsViewModel.getPeopleMediaListLiveData(peopleId)
             .observe(viewLifecycleOwner, Observer { imageList ->
-                mediaAdapter = MediaAdapter(imageList)
+                mediaAdapter = MediaAdapter(imageList) { position ->
+                    val sharedViewModel =
+                        ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+                    sharedViewModel.setBackdropList(imageList)
+                    sharedViewModel.setPosition(position)
+
+                    findNavController().navigate(R.id.mediaFragment)
+                }
                 binding?.recyclerViewPeopleMedia?.adapter = mediaAdapter
             })
     }

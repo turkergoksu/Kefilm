@@ -7,10 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import me.turkergoksu.kefilm.Constants
+import me.turkergoksu.kefilm.R
 import me.turkergoksu.kefilm.databinding.FragmentMovieDetailsBinding
+import me.turkergoksu.kefilm.ui.media.SharedViewModel
 import me.turkergoksu.kefilm.utils.StringUtil
 
 /**
@@ -113,7 +117,14 @@ class MovieDetailsFragment : Fragment() {
     private fun setMovieMedia() {
         movieDetailsViewModel.getMovieBackdropListLiveData(movieId)
             .observe(viewLifecycleOwner, Observer { backdropList ->
-                mediaAdapter = MediaAdapter(backdropList)
+                mediaAdapter = MediaAdapter(backdropList) { position ->
+                    val sharedViewModel =
+                        ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+                    sharedViewModel.setBackdropList(backdropList)
+                    sharedViewModel.setPosition(position)
+
+                    findNavController().navigate(R.id.mediaFragment)
+                }
                 binding.recyclerViewMovieMedia.adapter = mediaAdapter
             })
     }

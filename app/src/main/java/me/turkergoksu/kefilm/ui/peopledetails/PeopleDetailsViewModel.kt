@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import me.turkergoksu.kefilm.data.remote.api.MovieServiceProvider
+import me.turkergoksu.kefilm.model.moviedetails.Backdrop
 import me.turkergoksu.kefilm.model.people.*
 import retrofit2.Call
 import retrofit2.Callback

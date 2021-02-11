@@ -24,7 +24,8 @@
         android:id="@+id/movieDetailsFragment"
         android:name="me.turkergoksu.kefilm.ui.moviedetails.MovieDetailsFragment"
         android:label="fragment_movie_details"
-        tools:layout="@layout/fragment_movie_details" />
+        tools:layout="@layout/fragment_movie_details" >
+    </fragment>
     <fragment
         android:id="@+id/topRatedFragment"
         android:name="me.turkergoksu.kefilm.ui.toprated.TopRatedFragment"
@@ -35,4 +36,9 @@
         android:name="me.turkergoksu.kefilm.ui.peopledetails.PeopleDetailsFragment"
         android:label="fragment_people_details"
         tools:layout="@layout/fragment_people_details" />
+    <dialog
+        android:id="@+id/mediaFragment"
+        android:name="me.turkergoksu.kefilm.ui.media.MediaFragment"
+        android:label="fragment_media"
+        tools:layout="@layout/fragment_media" />
 </navigation>

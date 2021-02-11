@@ -8,4 +8,6 @@
     <color name="black">#000000</color>
     <color name="light_gray">#969696</color>
     <color name="transparent_black">#80000000</color>
+    <color name="media_transparent_black">#B3000000</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>
