@@ -1,10 +1,9 @@
 package me.turkergoksu.kefilm.data.remote.api
 
 import me.turkergoksu.kefilm.model.genre.GenreResponseModel
-import me.turkergoksu.kefilm.model.moviedetails.Cast
-import me.turkergoksu.kefilm.model.moviedetails.Image
-import me.turkergoksu.kefilm.model.moviedetails.MovieDetails
-import me.turkergoksu.kefilm.model.moviedetails.SimilarMovieResponseModel
+import me.turkergoksu.kefilm.model.moviedetails.*
+import me.turkergoksu.kefilm.model.people.KnownMovieResponseModel
+import me.turkergoksu.kefilm.model.people.PeopleDetails
 import me.turkergoksu.kefilm.model.popular.PopularResponseModel
 import me.turkergoksu.kefilm.model.toprated.TopRatedResponseModel
 import me.turkergoksu.kefilm.model.upcoming.UpcomingResponseModel
@@ -42,4 +41,16 @@ interface MovieService {
 
     @GET("/3/movie/popular")
     fun getPopularMovies(@Query("page") page: Int): Call<PopularResponseModel>
+
+    @GET("/3/person/{person_id}")
+    fun getPeopleDetails(@Path("person_id") personId: Int): Call<PeopleDetails>
+
+    @GET("/3/person/{person_id}/images")
+    fun getPeopleImages(@Path("person_id") personId: Int): Call<me.turkergoksu.kefilm.model.people.Image>
+
+    @GET("/3/person/{person_id}/movie_credits")
+    fun getPeopleKnownMovies(@Path("person_id") personId: Int): Call<KnownMovieResponseModel>
+
+    @GET("/3/movie/{movie_id}/videos")
+    fun getMovieVideos(@Path("movie_id") movieId: Int): Call<VideoResponseModel>
 }
