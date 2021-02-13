@@ -18,6 +18,11 @@
     <string name="fixed_known_for">Known For</string>
     <string name="dummy_people_bio">Gal Gadot (born: April 30, 1985) is an Israeli actress and model. She was born in Rosh Ha\'ayin, Israel, to an Ashkenazi Jewish family (from Poland, Austria, Germany, and Czechoslovakia). She served in the IDF for two years, and won the Miss Israel title in 2004.</string>
     <string name="media">Media</string>
+    <string name="trailer_action_text">This action wants to start Youtube app. Would you like to proceed?</string>
+    <string name="trailer_action_pos_button">Open</string>
+    <string name="trailer_action_neg_button">Cancel</string>
+    <string name="trailer_error_text">We encountered an error while trying to open trailer.</string>
+    <string name="movie_video_not_found">We couldn\'t find any videos for this movie :(</string>
 
     <string-array name="tab_titles">
         <item>Upcoming</item>

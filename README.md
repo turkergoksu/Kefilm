@@ -17,7 +17,7 @@ std::string movieDbApiKey = "YOUR_API_KEY_GOES_HERE";
 |:-:|:-:|:-:|
 | ![U](screenshots/latest/upcoming.gif?raw=true) | ![T](screenshots/latest/toprated.gif?raw=true) | ![P](screenshots/latest/popular.gif?raw=true) |
 | Movie Details | Media |  People Details |
-| ![M](screenshots/latest/movie_details.gif?raw=true) | ![Me]() | ![Pe]() |
+| ![M](screenshots/latest/movie_details.gif?raw=true) | | ![Pe]() |
 
 ## 🛠️Building With 
 + [Retrofit](https://github.com/square/retrofit) - Type-safe HTTP client for Android.

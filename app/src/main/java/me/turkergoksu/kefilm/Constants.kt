@@ -5,6 +5,7 @@ object Constants {
 
     const val API_URL = "https://api.themoviedb.org/"
     const val API_IMAGE_URL = "https://image.tmdb.org/t/p/original"
+    const val YOUTUBE_URL = "https://www.youtube.com/watch?v="
 
     const val TOP_BAR_TAB_COUNT = 3
 
@@ -20,6 +21,8 @@ object Constants {
     // Movie Details
     const val MOVIE_DETAILS_MOVIE_ID_ARG_KEY = "movieId"
     const val MOVIE_DETAILS_MEDIA_ITEM_CORNER_RADIUS = 32
+    const val MOVIE_DETAILS_VIDEO_SITE_YOUTUBE = "YouTube"
+    const val MOVIE_DETAILS_VIDEO_TYPE = "Trailer"
 
     // Popular
     const val POPULAR_MOVIE_ITEM_DEFAULT_WIDTH = 192

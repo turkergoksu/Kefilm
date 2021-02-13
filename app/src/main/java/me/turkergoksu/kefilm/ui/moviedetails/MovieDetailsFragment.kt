@@ -1,10 +1,15 @@
 package me.turkergoksu.kefilm.ui.moviedetails
 
+import android.app.AlertDialog
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -50,10 +55,6 @@ class MovieDetailsFragment : Fragment() {
         binding.imageViewBackIcon.setOnClickListener {
             Navigation.findNavController(it).popBackStack()
         }
-
-        binding.imageViewPlayIcon.setOnClickListener {
-            // TODO: 15-Jun-20 start youtube app with videos link
-        }
     }
 
     private fun setMovieDetailsFragment() {
@@ -64,7 +65,76 @@ class MovieDetailsFragment : Fragment() {
             setMovieCast()
             setMovieMedia()
             setMovieSimilarMovies()
+            setPlayVideo()
         }
+    }
+
+    private fun setPlayVideo() {
+        // Set play video
+        binding.imageViewPlayIcon.setOnClickListener {
+            movieDetailsViewModel.getMovieVideoList(movieId)
+                .observe(viewLifecycleOwner, Observer { videoList ->
+                    if (videoList.isEmpty().not()) {
+                        for (video in videoList) {
+                            if (isVideoFromYoutubeAndTrailer(
+                                    video.site,
+                                    video.type,
+                                    video.key
+                                )
+                            ) {
+                                video.key?.let { videoKey ->
+                                    getConfirmationFromUserToOpenYoutubeApp(
+                                        videoKey = videoKey
+                                    )
+                                }
+                                break
+                            }
+                        }
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            R.string.movie_video_not_found,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
+        }
+    }
+
+    private fun isVideoFromYoutubeAndTrailer(
+        videoSite: String?,
+        videoType: String?,
+        videoKey: String?
+    ): Boolean = videoSite == Constants.MOVIE_DETAILS_VIDEO_SITE_YOUTUBE &&
+            videoType == Constants.MOVIE_DETAILS_VIDEO_TYPE &&
+            videoKey != null
+
+
+    private fun getConfirmationFromUserToOpenYoutubeApp(videoKey: String) {
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.trailer_action_text)
+            .setPositiveButton(R.string.trailer_action_pos_button) { dialog, _ ->
+                try {
+                    val appIntent =
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("%s%s".format(Constants.YOUTUBE_URL, videoKey))
+                        )
+                    startActivity(appIntent)
+                } catch (e: ActivityNotFoundException) {
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.trailer_error_text,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                dialog.dismiss()
+            }
+            .setNegativeButton(R.string.trailer_action_neg_button) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
     }
 
     private fun setMovieDetails() {
