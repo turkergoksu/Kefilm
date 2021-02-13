@@ -1,3 +1,4 @@
+![](https://img.shields.io/badge/minSdkVersion-23-brightgreen.svg)
 # 🎬Kefilm 
 ## 📝About
 **Kefilm** is a movie app to learn and practice Modern Android development tools. Movie data provided by [The Movie Database (TMDb)](https://www.themoviedb.org/) API.
@@ -7,19 +8,17 @@ To run the app you need to get your own API key from [The Movie Database (TMDb)]
 std::string movieDbApiKey = "YOUR_API_KEY_GOES_HERE";
 ```
 
-+ Android 6.0+ (>23)
-
 ## 🌟Todos
-+ Add TMDb logo to images.lar).
++ Add TMDb logo to images.
 
 ## ✨Latest Screenshots
 | Upcoming | Top Rated |  Popular |
 |:-:|:-:|:-:|
 | ![U](screenshots/latest/upcoming.gif?raw=true) | ![T](screenshots/latest/toprated.gif?raw=true) | ![P](screenshots/latest/popular.gif?raw=true) |
-| Movie Details | Media |  People Details |
-| ![M](screenshots/latest/movie_details.gif?raw=true) | | ![Pe]() |
+| Movie Details | |  People Details |
+| ![M](screenshots/latest/movie_details.gif?raw=true) | | ![Pe](screenshots/latest/people_details.gif?raw=true) |
 
-## 🛠️Building With 
+## 🛠️Build With 
 + [Retrofit](https://github.com/square/retrofit) - Type-safe HTTP client for Android.
 + [Gson](https://github.com/google/gson) - A Java serialization/deserialization library to convert Java Objects into JSON and back.
 + [Glide](https://github.com/bumptech/glide) - An image loading and caching library for Android focused on smooth scrolling
