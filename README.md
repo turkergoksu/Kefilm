@@ -1,6 +1,5 @@
 ![](https://img.shields.io/badge/minSdkVersion-23-brightgreen.svg)
 # 🎬Kefilm 
-## 📝About
 **Kefilm** is a movie app to learn and practice Modern Android development tools. Movie data provided by [The Movie Database (TMDb)](https://www.themoviedb.org/) API.
 
 To run the app you need to get your own API key from [The Movie Database (TMDb)](https://www.themoviedb.org/). Then you need to change the line as indicated below in `app/src/main/cpp/api-keys.cpp`  file.
@@ -18,7 +17,7 @@ std::string movieDbApiKey = "YOUR_API_KEY_GOES_HERE";
 | Movie Details | |  People Details |
 | ![M](screenshots/latest/movie_details.gif?raw=true) | | ![Pe](screenshots/latest/people_details.gif?raw=true) |
 
-## 🛠️Build With 
+## 🛠️Built With 
 + [Retrofit](https://github.com/square/retrofit) - Type-safe HTTP client for Android.
 + [Gson](https://github.com/google/gson) - A Java serialization/deserialization library to convert Java Objects into JSON and back.
 + [Glide](https://github.com/bumptech/glide) - An image loading and caching library for Android focused on smooth scrolling
