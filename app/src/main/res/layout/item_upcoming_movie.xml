@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageViewPoster"
+                android:layout_width="@dimen/width_upcoming_item"
+                android:layout_height="@dimen/height_upcoming_item"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/dummy_movie_poster" />
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center_horizontal"
+                android:maxLines="2"
+                android:textAllCaps="true"
+                android:textSize="@dimen/text_size_28sp"
+                app:layout_constraintEnd_toEndOf="@id/imageViewPoster"
+                app:layout_constraintStart_toStartOf="@id/imageViewPoster"
+                app:layout_constraintTop_toBottomOf="@id/imageViewPoster"
+                tools:text="@string/dummy_movie_name" />
+
+            <TextView
+                android:id="@+id/textViewReleaseDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:textSize="@dimen/text_size_16sp"
+                app:layout_constraintEnd_toEndOf="@id/textViewTitle"
+                app:layout_constraintStart_toStartOf="@id/textViewTitle"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+                tools:text="@string/dummy_release_date" />
+
+            <TextView
+                android:id="@+id/textViewOverview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:maxLines="3"
+                android:padding="@dimen/padding_8dp"
+                android:textSize="@dimen/text_size_12sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="@id/textViewReleaseDate"
+                app:layout_constraintStart_toStartOf="@id/textViewReleaseDate"
+                app:layout_constraintTop_toBottomOf="@id/textViewReleaseDate"
+                tools:text="@string/dummy_movie_overview" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

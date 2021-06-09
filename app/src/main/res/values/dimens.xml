@@ -14,4 +14,12 @@
     <dimen name="textSize20sp">20sp</dimen>
     <dimen name="textSize14sp">14sp</dimen>
     <dimen name="textSize18sp">18sp</dimen>
+
+    <!--    NEW-->
+    <dimen name="width_upcoming_item">300dp</dimen>
+    <dimen name="height_upcoming_item">450dp</dimen>
+    <dimen name="text_size_28sp">28sp</dimen>
+    <dimen name="text_size_16sp">16sp</dimen>
+    <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
 </resources>
