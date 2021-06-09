@@ -7,7 +7,7 @@
 
     <activity
         android:id="@+id/mainActivity"
-        android:name="me.turkergoksu.kefilm.v1.ui.main.MainActivity"
+        android:name="me.turkergoksu.kefilm.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
     <fragment

@@ -1,4 +1,4 @@
-package me.turkergoksu.kefilm.v1
+package me.turkergoksu.kefilm
 
 object ApiKeyLibrary {
     init {

@@ -1,6 +1,4 @@
-package me.turkergoksu.kefilm.v1
-
-import me.turkergoksu.kefilm.R
+package me.turkergoksu.kefilm
 
 object Constants {
     const val EXTENSION_API_KEYS_FILE_NAME = "api-keys"
