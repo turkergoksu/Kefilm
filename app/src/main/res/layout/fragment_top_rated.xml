@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.toprated.TopRatedFragment">
+    tools:context=".v1.ui.toprated.TopRatedFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_topRated_movies"
