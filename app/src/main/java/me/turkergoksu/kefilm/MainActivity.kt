@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), Navigator.NavigatorListener {
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.upcoming -> {
+                R.id.navigation_upcoming -> {
                     navigator.switchTab(0)
                     return@setOnNavigationItemSelectedListener true
                 }
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), Navigator.NavigatorListener {
 
     override fun onTabChanged(tabIndex: Int) {
         when (tabIndex) {
-            0 -> binding.bottomNavigationView.selectedItemId = R.id.upcoming
+            0 -> binding.bottomNavigationView.selectedItemId = R.id.navigation_upcoming
         }
     }
 
