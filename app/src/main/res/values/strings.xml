@@ -23,10 +23,12 @@
     <string name="trailer_action_neg_button">Cancel</string>
     <string name="trailer_error_text">We encountered an error while trying to open trailer.</string>
     <string name="movie_video_not_found">We couldn\'t find any videos for this movie :(</string>
-
     <string-array name="tab_titles">
         <item>Upcoming</item>
         <item>Top Rated</item>
         <item>Popular</item>
     </string-array>
+
+    <!--    NEW-->
+    <string name="upcoming">Upcoming</string>
 </resources>

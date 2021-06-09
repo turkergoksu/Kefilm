@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <!--    <color name="colorPrimary">#6200EE</color>-->
+    <!--    <color name="colorPrimaryDark">#3700B3</color>-->
+    <!--    <color name="colorAccent">#03DAC5</color>-->
     <color name="defaultBackground">#1F1E1E</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
@@ -10,4 +10,9 @@
     <color name="transparent_black">#80000000</color>
     <color name="media_transparent_black">#CC000000</color>
     <color name="transparent">#00FFFFFF</color>
+
+    <!--    NEW-->
+    <color name="colorPrimary">#9c27b0</color>
+    <color name="colorPrimaryDark">#6a0080</color>
+    <color name="colorAccent">#d05ce3</color>
 </resources>
