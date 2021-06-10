@@ -3,6 +3,7 @@ package me.turkergoksu.kefilm.upcoming.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearSnapHelper
 import me.turkergoksu.kefilm.core.BaseFragment
 import me.turkergoksu.kefilm.databinding.FragmentUpcomingBinding
 import me.turkergoksu.kefilm.upcoming.data.UpcomingMovieItem
@@ -25,6 +26,9 @@ class UpcomingFragment : BaseFragment<FragmentUpcomingBinding, UpcomingViewModel
     private fun setupRecyclerView() {
         val adapter = UpcomingMovieItemAdapter()
         binding.recyclerViewUpcomingList.adapter = adapter
+
+        val snapHelper = LinearSnapHelper()
+        snapHelper.attachToRecyclerView(binding.recyclerViewUpcomingList)
 
         val dummyList = listOf(
             UpcomingMovieItem(
