@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearSnapHelper
+import dagger.hilt.android.AndroidEntryPoint
 import me.turkergoksu.kefilm.core.BaseFragment
 import me.turkergoksu.kefilm.databinding.FragmentUpcomingBinding
 import me.turkergoksu.kefilm.upcoming.data.UpcomingMovieItem
@@ -11,6 +12,7 @@ import me.turkergoksu.kefilm.upcoming.data.UpcomingMovieItem
 /**
  * Created by turkergoksu on 09-Jun-21.
  */
+@AndroidEntryPoint
 class UpcomingFragment : BaseFragment<FragmentUpcomingBinding, UpcomingViewModel>() {
 
     override val viewModel: UpcomingViewModel by viewModels()
