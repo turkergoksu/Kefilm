@@ -54,23 +54,6 @@
                 app:layout_constraintStart_toStartOf="@id/textViewTitle"
                 app:layout_constraintTop_toBottomOf="@id/textViewTitle"
                 tools:text="@string/dummy_release_date" />
-
-            <TextView
-                android:id="@+id/textViewOverview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:maxLines="3"
-                android:padding="@dimen/padding_8dp"
-                android:text="@{item.overview}"
-                android:textSize="@dimen/text_size_12sp"
-                android:textStyle="italic"
-                app:layout_constraintEnd_toEndOf="@id/textViewReleaseDate"
-                app:layout_constraintStart_toStartOf="@id/textViewReleaseDate"
-                app:layout_constraintTop_toBottomOf="@id/textViewReleaseDate"
-                tools:text="@string/dummy_movie_overview" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

@@ -32,14 +32,12 @@ class UpcomingFragment : BaseFragment<FragmentUpcomingBinding, UpcomingViewModel
                 posterPath = "",
                 title = "myTitle",
                 releaseDate = "date",
-                overview = "overviiiew"
             ),
             UpcomingMovieItem(
                 id = 1,
                 posterPath = "",
                 title = "myTitleeee",
                 releaseDate = "dateee",
-                overview = "overviiiewee"
             )
         )
         adapter.submitList(dummyList)
