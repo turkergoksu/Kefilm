@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.trendyol.medusalib.navigator.MultipleStackNavigator
 import com.trendyol.medusalib.navigator.Navigator
+import dagger.hilt.android.AndroidEntryPoint
 import me.turkergoksu.kefilm.databinding.ActivityMainBinding
 import me.turkergoksu.kefilm.upcoming.ui.UpcomingFragment
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), Navigator.NavigatorListener {
 
     private var _binding: ActivityMainBinding? = null
