@@ -1,3 +1,7 @@
+/**
+ * Change this file name to "api-key.cpp"
+ */
+
 #include <jni.h>
 #include <string>
 

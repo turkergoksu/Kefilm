@@ -1,7 +1,7 @@
 package me.turkergoksu.kefilm
 
 object Constants {
-    const val EXTENSION_API_KEYS_FILE_NAME = "api-keys"
+    const val EXTENSION_API_KEYS_FILE_NAME = "api-key"
 
     const val API_URL = "https://api.themoviedb.org/"
     const val API_IMAGE_URL = "https://image.tmdb.org/t/p/original"
