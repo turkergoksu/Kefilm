@@ -22,6 +22,7 @@
                 android:id="@+id/imageViewPoster"
                 android:layout_width="@dimen/width_upcoming_item"
                 android:layout_height="@dimen/height_upcoming_item"
+                android:image="@{item.posterPath}"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

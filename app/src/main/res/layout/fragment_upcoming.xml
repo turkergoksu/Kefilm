@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewState"
+            type="me.turkergoksu.kefilm.upcoming.ui.UpcomingMovieListViewState" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,6 +18,7 @@
             android:id="@+id/recyclerViewUpcomingList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:items="@{viewState.upcomingMovieList}"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_upcoming_movie" />
