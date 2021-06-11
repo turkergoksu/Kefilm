@@ -3,6 +3,8 @@
 **Kefilm** is a movie app to learn and practice Modern Android development tools. Movie data provided by [The Movie Database (TMDb)](https://www.themoviedb.org/) API.
 
 To run the app you need to get your own API key from [The Movie Database (TMDb)](https://www.themoviedb.org/). Then you need to change the line as indicated below in `app/src/main/cpp/api-keys.cpp`  file.
+
+⚠️ Also don't forget to change file name to "api-key.cpp". ⚠️
 ```cpp
 std::string movieDbApiKey = "YOUR_API_KEY_GOES_HERE";
 ```
