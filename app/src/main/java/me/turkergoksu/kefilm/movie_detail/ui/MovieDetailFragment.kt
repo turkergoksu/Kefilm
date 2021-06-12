@@ -1,5 +1,7 @@
 package me.turkergoksu.kefilm.movie_detail.ui
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import me.turkergoksu.kefilm.core.BaseFragment
@@ -14,4 +16,12 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding, MovieDetail
     override val viewModel: MovieDetailViewModel by viewModels()
 
     override fun getViewBinding() = FragmentMovieDetailBinding.inflate(layoutInflater)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.movieDetail.observe(viewLifecycleOwner) {
+            binding.viewState = it
+        }
+    }
 }
