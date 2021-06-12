@@ -3,7 +3,7 @@ package me.turkergoksu.kefilm.upcoming.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.PagerSnapHelper
 import dagger.hilt.android.AndroidEntryPoint
 import me.turkergoksu.kefilm.core.BaseFragment
 import me.turkergoksu.kefilm.databinding.FragmentUpcomingBinding
@@ -32,7 +32,7 @@ class UpcomingFragment : BaseFragment<FragmentUpcomingBinding, UpcomingViewModel
         val adapter = UpcomingMovieItemAdapter()
         binding.recyclerViewUpcomingList.adapter = adapter
 
-        val snapHelper = LinearSnapHelper()
+        val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.recyclerViewUpcomingList)
     }
 
