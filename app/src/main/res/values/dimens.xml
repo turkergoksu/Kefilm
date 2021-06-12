@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="padding16dp">16dp</dimen>
-    <dimen name="margin16dp">16dp</dimen>
-    <dimen name="textSize28sp">28sp</dimen>
-    <dimen name="padding8dp">8dp</dimen>
-    <dimen name="textSize16sp">16sp</dimen>
-    <dimen name="textSize12sp">12sp</dimen>
-    <dimen name="upcomingItemWidth">300dp</dimen>
-    <dimen name="upcomingItemHeight">450dp</dimen>
-    <dimen name="margin4dp">4dp</dimen>
-    <dimen name="margin8dp">8dp</dimen>
-    <dimen name="padding4dp">4dp</dimen>
-    <dimen name="textSize20sp">20sp</dimen>
-    <dimen name="textSize14sp">14sp</dimen>
-    <dimen name="textSize18sp">18sp</dimen>
-
     <!--    NEW-->
     <dimen name="text_size_28sp">28sp</dimen>
+    <dimen name="text_size_24sp">24sp</dimen>
     <dimen name="text_size_16sp">16sp</dimen>
     <dimen name="text_size_12sp">12sp</dimen>
 
-    <dimen name="padding_8dp">8dp</dimen>
-    <dimen name="padding_16dp">16dp</dimen>
     <dimen name="padding_32dp">32dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
+
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
 
     <dimen name="radius_upcoming_item_card_view">32dp</dimen>
+    <dimen name="height_movie_detail_poster">300dp</dimen>
+    <dimen name="height_movie_detail_rating">16dp</dimen>
 </resources>
