@@ -10,51 +10,59 @@
             type="me.turkergoksu.kefilm.upcoming.data.UpcomingMovieItem" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding16dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewPoster"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            app:cardCornerRadius="@dimen/radius_upcoming_item_card_view"
+            app:layout_constraintBottom_toTopOf="@id/textViewTitle"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imageViewPoster"
-                android:layout_width="@dimen/width_upcoming_item"
-                android:layout_height="@dimen/height_upcoming_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:image="@{item.posterPath}"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/dummy_movie_poster" />
+        </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:id="@+id/textViewTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center_horizontal"
-                android:maxLines="2"
-                android:text="@{item.title}"
-                android:textAllCaps="true"
-                android:textSize="@dimen/text_size_28sp"
-                app:layout_constraintEnd_toEndOf="@id/imageViewPoster"
-                app:layout_constraintStart_toStartOf="@id/imageViewPoster"
-                app:layout_constraintTop_toBottomOf="@id/imageViewPoster"
-                tools:text="@string/dummy_movie_name" />
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:maxLines="2"
+            android:minLines="2"
+            android:text="@{item.title}"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_28sp"
+            app:layout_constraintBottom_toTopOf="@id/textViewReleaseDate"
+            app:layout_constraintEnd_toEndOf="@id/textViewReleaseDate"
+            app:layout_constraintStart_toStartOf="@id/textViewReleaseDate"
+            tools:text="@string/dummy_movie_name" />
 
-            <TextView
-                android:id="@+id/textViewReleaseDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
-                android:text="@{item.releaseDate}"
-                android:textSize="@dimen/text_size_16sp"
-                app:layout_constraintEnd_toEndOf="@id/textViewTitle"
-                app:layout_constraintStart_toStartOf="@id/textViewTitle"
-                app:layout_constraintTop_toBottomOf="@id/textViewTitle"
-                tools:text="@string/dummy_release_date" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+        <TextView
+            android:id="@+id/textViewReleaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@{item.releaseDate}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@string/dummy_release_date" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

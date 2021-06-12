@@ -32,7 +32,7 @@ class UpcomingMovieItemAdapter :
         override fun bind(item: UpcomingMovieItem) {
             binding.item = item
 
-            binding.imageViewPoster.setOnClickListener {
+            binding.cardViewPoster.setOnClickListener {
                 itemClickListener?.invoke(item)
             }
         }
