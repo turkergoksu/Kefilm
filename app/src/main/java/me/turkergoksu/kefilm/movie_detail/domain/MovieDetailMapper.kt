@@ -3,8 +3,9 @@ package me.turkergoksu.kefilm.movie_detail.domain
 import me.turkergoksu.kefilm.ext.formatDefaultDate
 import me.turkergoksu.kefilm.movie_detail.data.MovieDetail
 import me.turkergoksu.kefilm.movie_detail.data.remote.MovieDetailResponse
+import javax.inject.Inject
 
-class MovieDetailMapper {
+class MovieDetailMapper @Inject constructor() {
 
     fun mapFromResponse(response: MovieDetailResponse?) = MovieDetail(
         id = response?.id ?: throw NullPointerException("Movie detail id is null."),

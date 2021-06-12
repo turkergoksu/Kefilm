@@ -6,11 +6,12 @@ import me.turkergoksu.kefilm.api.MovieService
 import me.turkergoksu.kefilm.core.DataSource
 import me.turkergoksu.kefilm.core.Resource
 import me.turkergoksu.kefilm.di.module.IoDispatcher
+import javax.inject.Inject
 
 /**
  * Created by turkergoksu on 12-Jun-21.
  */
-class MovieDetailRemoteDataSource(
+class MovieDetailRemoteDataSource @Inject constructor(
     private val movieService: MovieService,
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : DataSource.Remote {
