@@ -20,6 +20,8 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding, MovieDetail
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // FIXME: 17-Jun-21
+        viewModel.fetchMovieDetail(0)
         viewModel.movieDetail.observe(viewLifecycleOwner) {
             binding.viewState = it
         }

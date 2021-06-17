@@ -1,4 +1,4 @@
-package me.turkergoksu.kefilm.upcoming.ui
+package me.turkergoksu.kefilm.now_playing.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,36 +8,36 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import me.turkergoksu.kefilm.core.Resource
-import me.turkergoksu.kefilm.upcoming.domain.UpcomingUseCase
+import me.turkergoksu.kefilm.now_playing.domain.NowPlayingUseCase
 import javax.inject.Inject
 
 /**
  * Created by turkergoksu on 09-Jun-21.
  */
 @HiltViewModel
-class UpcomingViewModel @Inject constructor(
-    private val upcomingUseCase: UpcomingUseCase
+class NowPlayingViewModel @Inject constructor(
+    private val nowPlayingUseCase: NowPlayingUseCase
 ) : ViewModel() {
 
-    private val _upcomingMovies = MutableLiveData<UpcomingMovieListViewState>()
-    val upcomingMovies: LiveData<UpcomingMovieListViewState> = _upcomingMovies
+    private val _nowPlayingMovies = MutableLiveData<NowPlayingMovieListViewState>()
+    val nowPlayingMovies: LiveData<NowPlayingMovieListViewState> = _nowPlayingMovies
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
 
     init {
-        fetchUpcomingMovies()
+        fetchNowPlayingMovies()
     }
 
-    fun fetchUpcomingMovies() {
+    fun fetchNowPlayingMovies() {
         viewModelScope.launch {
-            upcomingUseCase.fetchUpcomingMovies().collect {
+            nowPlayingUseCase.fetchNowPlayingMovies().collect {
                 when (it) {
                     is Resource.Error -> {
                     } // FIXME: 11-Jun-21 show snackbar maybe
                     is Resource.Loading -> _loading.value = true
-                    is Resource.Success -> _upcomingMovies.value =
-                        UpcomingMovieListViewState(it.data)
+                    is Resource.Success -> _nowPlayingMovies.value =
+                        NowPlayingMovieListViewState(it.data)
                 }
             }
         }

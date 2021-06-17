@@ -1,39 +1,12 @@
 <resources>
     <string name="app_name">Kefilm</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="fixed_upcoming">Upcoming</string>
-    <string name="fixed_top_rated">Top Rated</string>
-    <string name="fixed_popular">Popular</string>
-
-    <string name="dummy_movie_runtime">120 min</string>
-    <string name="dummy_movie_genres">Action Drama Crime</string>
-    <string name="dummy_people_name">Gal Gadot</string>
-    <string name="fixed_place_of_birth">Place of Birth</string>
-    <string name="fixed_birthday">Birthday</string>
-    <string name="fixed_known_for">Known For</string>
-    <string name="dummy_people_bio">Gal Gadot (born: April 30, 1985) is an Israeli actress and model. She was born in Rosh Ha\'ayin, Israel, to an Ashkenazi Jewish family (from Poland, Austria, Germany, and Czechoslovakia). She served in the IDF for two years, and won the Miss Israel title in 2004.</string>
-    <string name="media">Media</string>
-    <string name="trailer_action_text">This action wants to start Youtube app. Would you like to proceed?</string>
-    <string name="trailer_action_pos_button">Open</string>
-    <string name="trailer_action_neg_button">Cancel</string>
-    <string name="trailer_error_text">We encountered an error while trying to open trailer.</string>
-    <string name="movie_video_not_found">We couldn\'t find any videos for this movie :(</string>
-    <string-array name="tab_titles">
-        <item>Upcoming</item>
-        <item>Top Rated</item>
-        <item>Popular</item>
-    </string-array>
-
-    <!--    NEW-->
     <!--    Upcoming-->
-    <string name="upcoming">Upcoming</string>
+    <string name="now_playing">Now Playing</string>
     <string name="dummy_release_date">27 Sep 2019</string>
 
     <!--    Movie Detail-->
     <string name="dummy_movie_release_year">2019</string>
     <string name="dummy_movie_name">The Irishman</string>
-    <string name="dummy_movie_overview">An aging hitman recalls his time with the mob and the intersecting events with his friend, Jimmy Hoffa, through the 1950-70s.</string>
-
+    <string name="dummy_movie_overview">An aging hitman recalls his time with the mob and the intersecting events with his friend, Jimmy Hoffa, through the 1950–70s.</string>
 </resources>

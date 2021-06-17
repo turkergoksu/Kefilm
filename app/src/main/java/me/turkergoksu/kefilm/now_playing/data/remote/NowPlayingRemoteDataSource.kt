@@ -1,4 +1,4 @@
-package me.turkergoksu.kefilm.upcoming.data.remote
+package me.turkergoksu.kefilm.now_playing.data.remote
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -11,15 +11,15 @@ import javax.inject.Inject
 /**
  * Created by turkergoksu on 11-Jun-21.
  */
-class UpcomingRemoteDataSource @Inject constructor(
+class NowPlayingRemoteDataSource @Inject constructor(
     private val movieService: MovieService,
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : DataSource.Remote {
 
-    suspend fun getUpcomingMovies(): Resource<UpcomingResponse> =
+    suspend fun getNowPlayingMovies(): Resource<NowPlayingResponse> =
         withContext(dispatcher) {
             val response = try {
-                movieService.getUpcomingMovies()
+                movieService.getNowPlayingMovies()
             } catch (e: Exception) {
                 e.printStackTrace()
                 null

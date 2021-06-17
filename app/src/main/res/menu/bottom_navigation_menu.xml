@@ -2,6 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_upcoming"
-        android:title="@string/upcoming"
+        android:title="@string/now_playing"
         android:icon="@drawable/ic_upcoming" />
 </menu>

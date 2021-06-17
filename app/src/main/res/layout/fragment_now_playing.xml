@@ -7,7 +7,7 @@
 
         <variable
             name="viewState"
-            type="me.turkergoksu.kefilm.upcoming.ui.UpcomingMovieListViewState" />
+            type="me.turkergoksu.kefilm.now_playing.ui.NowPlayingMovieListViewState" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,12 +15,12 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewUpcomingList"
+            android:id="@+id/recyclerViewNowPlayingList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:items="@{viewState.upcomingMovieList}"
+            android:items="@{viewState.nowPlayingMovieList}"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_upcoming_movie" />
+            tools:listitem="@layout/item_now_playing_movie" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

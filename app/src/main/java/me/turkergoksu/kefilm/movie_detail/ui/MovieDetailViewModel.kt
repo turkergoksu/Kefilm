@@ -17,7 +17,6 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
-    private val movieId: Int,
     private val useCase: MovieDetailUseCase,
 ) : ViewModel() {
 
@@ -27,11 +26,7 @@ class MovieDetailViewModel @Inject constructor(
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
 
-    init {
-        fetchMovieDetail(movieId)
-    }
-
-    private fun fetchMovieDetail(movieId: Int) {
+    fun fetchMovieDetail(movieId: Int) {
         viewModelScope.launch {
             useCase.fetchMovieDetail(movieId).collect {
                 when (it) {

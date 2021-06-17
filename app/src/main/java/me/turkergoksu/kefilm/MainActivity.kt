@@ -7,7 +7,7 @@ import com.trendyol.medusalib.navigator.MultipleStackNavigator
 import com.trendyol.medusalib.navigator.Navigator
 import dagger.hilt.android.AndroidEntryPoint
 import me.turkergoksu.kefilm.databinding.ActivityMainBinding
-import me.turkergoksu.kefilm.upcoming.ui.UpcomingFragment
+import me.turkergoksu.kefilm.now_playing.ui.NowPlayingFragment
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), Navigator.NavigatorListener {
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), Navigator.NavigatorListener {
 
     private val rootFragmentProvider: List<() -> Fragment> =
         listOf(
-            { UpcomingFragment.newInstance() },
+            { NowPlayingFragment.newInstance() },
         )
 
     val navigator: MultipleStackNavigator =

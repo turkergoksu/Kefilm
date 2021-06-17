@@ -8,11 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="TabLayoutCustomFontStyle">
-        <item name="fontFamily">@font/montserrat</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-
     <style name="FullScreenDialogStyle" parent="AppTheme">
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowBackground">@color/media_transparent_black</item>
