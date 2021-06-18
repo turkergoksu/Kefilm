@@ -1,39 +1,35 @@
 package me.turkergoksu.kefilm.now_playing.ui
 
-import android.os.Bundle
-import android.view.View
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.PagerSnapHelper
+import com.google.accompanist.pager.ExperimentalPagerApi
 import dagger.hilt.android.AndroidEntryPoint
-import me.turkergoksu.kefilm.core.BaseFragment
-import me.turkergoksu.kefilm.databinding.FragmentNowPlayingBinding
+import me.turkergoksu.kefilm.core.BaseComposeFragment
+import me.turkergoksu.kefilm.now_playing.ui.compose.NowPlayingMovies
+import me.turkergoksu.kefilm.theme.KefilmTheme
 
 /**
  * Created by turkergoksu on 09-Jun-21.
  */
 @AndroidEntryPoint
-class NowPlayingFragment : BaseFragment<FragmentNowPlayingBinding, NowPlayingViewModel>() {
+class NowPlayingFragment : BaseComposeFragment<NowPlayingViewModel>() {
 
     override val viewModel: NowPlayingViewModel by viewModels()
 
-    override fun getViewBinding() = FragmentNowPlayingBinding.inflate(layoutInflater)
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        setupRecyclerView()
-
-        viewModel.nowPlayingMovies.observe(viewLifecycleOwner) {
-            binding.viewState = it
+    @Composable
+    @ExperimentalPagerApi
+    override fun Content() {
+        KefilmTheme {
+            viewModel.fetchNowPlayingMovies()
+            val state = viewModel.nowPlayingMovies.observeAsState(
+                initial = NowPlayingMovieListViewState(
+                    nowPlayingMovieList = listOf()
+                )
+            )
+            val movieList = state.value.nowPlayingMovieList
+            NowPlayingMovies(data = movieList)
         }
-    }
-
-    private fun setupRecyclerView() {
-        val adapter = NowPlayingMovieItemAdapter()
-        binding.recyclerViewNowPlayingList.adapter = adapter
-
-        val snapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(binding.recyclerViewNowPlayingList)
     }
 
     companion object {
