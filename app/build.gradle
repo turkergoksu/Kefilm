@@ -48,14 +48,54 @@ android {
         }
     }
 
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     buildFeatures {
         dataBinding true
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerVersion "1.5.10"
+        kotlinCompilerExtensionVersion '1.0.0-beta09'
     }
 
     ndkVersion '22.0.7026061'
 }
 
 dependencies {
+    def accompanist_version = '0.12.0'
+
+    // Pager
+    implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
+
+    // Coil
+    implementation "io.coil-kt:coil:1.2.2"
+    implementation "com.google.accompanist:accompanist-coil:$accompanist_version"
+
+    def compose_version = '1.0.0-beta09'
+
+    implementation "androidx.compose.ui:ui:$compose_version"
+    // Tooling support (Previews, etc.)
+    implementation "androidx.compose.ui:ui-tooling:$compose_version"
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    // Material Design
+    implementation "androidx.compose.material:material:$compose_version"
+    // Material design icons
+    implementation "androidx.compose.material:material-icons-core:$compose_version"
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+    // Integration with activities
+    implementation 'androidx.activity:activity-compose:1.3.0-beta02'
+    // Integration with ViewModels
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07'
+    // Integration with observables
+    implementation 'androidx.compose.runtime:runtime-livedata:1.0.0-beta09'
+    // Constraint Layout
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha08"
+
     // MaterialRatingBar
     implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
 
