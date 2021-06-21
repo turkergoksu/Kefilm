@@ -4,13 +4,19 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import dagger.hilt.android.AndroidEntryPoint
 import me.turkergoksu.kefilm.common.navigation.KefilmNavigation
+import me.turkergoksu.kefilm.common.navigation.Screen
 import me.turkergoksu.kefilm.theme.KefilmTheme
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    private val bottomNavigationItems = listOf(
+        Screen.NowPlaying,
+    )
 
     @ExperimentalMaterialApi
     @ExperimentalPagerApi
@@ -18,7 +24,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             KefilmTheme {
-                KefilmNavigation()
+                KefilmNavigation(
+                    navHostController = rememberNavController(),
+                    bottomNavigationItems = bottomNavigationItems
+                )
             }
         }
     }
