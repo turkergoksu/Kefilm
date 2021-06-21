@@ -5,4 +5,9 @@ package me.turkergoksu.kefilm.common.navigation
  */
 sealed class Screen(val route: String) {
     object NowPlaying : Screen(route = "nowPlaying")
+    object MovieDetail : Screen(route = "movieDetail/{movieId}") {
+        fun route(movieId: Int) = "movieDetail/$movieId"
+
+        const val ARG_MOVIE_ID = "movieId"
+    }
 }

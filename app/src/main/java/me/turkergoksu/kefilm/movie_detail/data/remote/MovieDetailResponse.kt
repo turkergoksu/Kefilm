@@ -7,6 +7,10 @@ import com.google.gson.annotations.SerializedName
  * Created by turkergoksu on 12-Jun-21.
  */
 data class MovieDetailResponse(
+    @SerializedName("budget")
+    val budget: Int?,
+    @SerializedName("genres")
+    val genres: List<GenreResponse>?,
     @SerializedName("id")
     val id: Int?,
     @SerializedName("overview")
@@ -15,10 +19,17 @@ data class MovieDetailResponse(
     val posterPath: String?,
     @SerializedName("release_date")
     val releaseDate: String?,
+    @SerializedName("runtime")
+    val runtime: Int?,
     @SerializedName("title")
     val title: String?,
     @SerializedName("vote_average")
     val voteAverage: Double?,
-    @SerializedName("vote_count")
-    val voteCount: Int?
+)
+
+data class GenreResponse(
+    @SerializedName("id")
+    val id: Int?,
+    @SerializedName("name")
+    val name: String?
 )

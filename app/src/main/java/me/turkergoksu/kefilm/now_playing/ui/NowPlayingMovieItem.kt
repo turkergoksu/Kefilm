@@ -1,4 +1,4 @@
-package me.turkergoksu.kefilm.now_playing.ui.compose
+package me.turkergoksu.kefilm.now_playing.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -28,6 +29,7 @@ import me.turkergoksu.kefilm.theme.KefilmTheme
 /**
  * Created by turkergoksu on 18-Jun-21.
  */
+@ExperimentalMaterialApi
 @Preview
 @Composable
 fun PreviewNowPlayingMovieItem() {
@@ -37,12 +39,13 @@ fun PreviewNowPlayingMovieItem() {
         title = "The Irishman"
     )
     KefilmTheme {
-        NowPlayingMovieItem(nowPlayingMovieItem = item)
+        NowPlayingMovieItem(nowPlayingMovieItem = item) { }
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
-fun NowPlayingMovieItem(nowPlayingMovieItem: NowPlayingMovieItem) {
+fun NowPlayingMovieItem(nowPlayingMovieItem: NowPlayingMovieItem, onClick: () -> Unit) {
     ConstraintLayout(
         modifier = Modifier
             .width(LocalConfiguration.current.screenWidthDp.dp)
@@ -58,7 +61,8 @@ fun NowPlayingMovieItem(nowPlayingMovieItem: NowPlayingMovieItem) {
                     top.linkTo(parent.top)
                     bottom.linkTo(text.top, margin = 8.dp)
                     height = Dimension.preferredWrapContent
-                }
+                },
+            onClick = onClick
         ) {
             Image(
                 painter = rememberCoilPainter(
