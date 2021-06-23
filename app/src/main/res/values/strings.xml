@@ -9,4 +9,7 @@
     <string name="dummy_movie_release_year">2019</string>
     <string name="dummy_movie_name">The Irishman</string>
     <string name="dummy_movie_overview">An aging hitman recalls his time with the mob and the intersecting events with his friend, Jimmy Hoffa, through the 1950–70s.</string>
+
+    <!--    Popular-->
+    <string name="popular">Popular</string>
 </resources>

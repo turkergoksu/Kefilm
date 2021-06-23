@@ -19,6 +19,7 @@ import androidx.navigation.compose.navArgument
 import com.google.accompanist.pager.ExperimentalPagerApi
 import me.turkergoksu.kefilm.movie_detail.ui.MovieDetailScreen
 import me.turkergoksu.kefilm.now_playing.ui.NowPlayingScreen
+import me.turkergoksu.kefilm.popular.ui.PopularScreen
 
 /**
  * Created by turkergoksu on 21-Jun-21.
@@ -81,10 +82,10 @@ fun Navigation(navHostController: NavHostController, innerPadding: PaddingValues
         modifier = Modifier.padding(innerPadding)
     ) {
         composable(Screen.NowPlaying.route) {
-            NowPlayingScreen(
-                navController = navHostController,
-                viewModel = hiltViewModel()
-            )
+            NowPlayingScreen(navController = navHostController, viewModel = hiltViewModel())
+        }
+        composable(Screen.Popular.route) {
+            PopularScreen(navController = navHostController, viewModel = hiltViewModel())
         }
         composable(
             Screen.MovieDetail.route,

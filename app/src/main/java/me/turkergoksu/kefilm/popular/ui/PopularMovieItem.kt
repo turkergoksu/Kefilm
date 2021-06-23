@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,6 +24,7 @@ import me.turkergoksu.kefilm.Constants
 import me.turkergoksu.kefilm.R
 import me.turkergoksu.kefilm.popular.data.PopularMovieItem
 import me.turkergoksu.kefilm.theme.KefilmTheme
+import me.turkergoksu.kefilm.theme.PopularMovieItemTitleBackground
 
 /**
  * Created by turkergoksu on 23-Jun-21.
@@ -46,7 +48,7 @@ fun PreviewPopularMovieItem() {
 @Composable
 fun PopularMovieItem(
     item: PopularMovieItem,
-    paddingValues: PaddingValues = PaddingValues(all = 16.dp),
+    paddingValues: PaddingValues = PaddingValues(vertical = 8.dp),
     onClick: (PopularMovieItem) -> Unit
 ) {
     ConstraintLayout(
@@ -65,13 +67,15 @@ fun PopularMovieItem(
         }) {
             Image(
                 painter = rememberCoilPainter(
-                    request = Constants.API_IMAGE_URL + item.backdropPath,
+                    request = Constants.API_W500_IMAGE_URL + item.backdropPath,
                     previewPlaceholder = R.drawable.dummy_movie_poster,
                     fadeIn = true
                 ),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.height(150.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(150.dp)
             )
         }
 
@@ -82,7 +86,7 @@ fun PopularMovieItem(
             maxLines = 1,
             modifier = Modifier
                 .background(
-                    color = Color.Black,
+                    color = PopularMovieItemTitleBackground,
                     shape = RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)
                 )
                 .padding(8.dp)

@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private val bottomNavigationItems = listOf(
         Screen.NowPlaying,
+        Screen.Popular,
     )
 
     @ExperimentalMaterialApi

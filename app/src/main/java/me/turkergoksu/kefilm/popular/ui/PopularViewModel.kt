@@ -24,6 +24,10 @@ class PopularViewModel @Inject constructor(private val popularUseCase: PopularUs
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
 
+    init {
+        fetchPopularMovies()
+    }
+
     fun fetchPopularMovies() {
         viewModelScope.launch {
             popularUseCase.fetchPopularMovies().collect {

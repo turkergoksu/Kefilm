@@ -3,6 +3,7 @@ package me.turkergoksu.kefilm.common.navigation
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberNew
+import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.ui.graphics.vector.ImageVector
 import me.turkergoksu.kefilm.R
 
@@ -19,6 +20,12 @@ sealed class Screen(
         route = "nowPlaying",
         resourceId = R.string.now_playing,
         icon = Icons.Filled.FiberNew
+    )
+
+    object Popular : Screen(
+        route = "popular",
+        resourceId = R.string.popular,
+        icon = Icons.Filled.TrendingUp
     )
 
     object MovieDetail : Screen(route = "movieDetail/{movieId}") {
