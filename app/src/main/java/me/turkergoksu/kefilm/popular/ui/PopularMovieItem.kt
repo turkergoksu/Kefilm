@@ -53,10 +53,7 @@ fun PopularMovieItem(
 ) {
     ConstraintLayout(
         modifier = Modifier
-            .padding(paddingValues)
-            .clickable {
-                onClick(item)
-            },
+            .padding(paddingValues),
     ) {
         val (backdrop, title, popularity) = createRefs()
 
@@ -76,6 +73,9 @@ fun PopularMovieItem(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(150.dp)
+                    .clickable {
+                        onClick(item)
+                    }
             )
         }
 
