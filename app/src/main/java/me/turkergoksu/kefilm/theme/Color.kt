@@ -12,3 +12,4 @@ val MediocreMovieRatingColor = Color(0xFFffa726)
 val GoodMovieRatingColor = Color.Green
 
 val PopularMovieItemTitleBackground = Color(0x80000000)
+val PopularMovieItemPopularityIconTint = Color(0xfffe8e00)
