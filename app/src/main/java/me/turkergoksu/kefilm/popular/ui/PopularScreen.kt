@@ -17,12 +17,16 @@ import me.turkergoksu.kefilm.common.navigation.Screen
 fun PopularScreen(navController: NavController, viewModel: PopularViewModel) {
     val data = viewModel.popularMovieList.observeAsState().value?.popularMovieList ?: listOf()
     if (data.isNotEmpty()) {
-        LazyColumn(
-            contentPadding = PaddingValues(horizontal = 16.dp)
-        ) {
+        LazyColumn(contentPadding = PaddingValues(all = 8.dp)) {
             items(data.size) { index ->
+                val itemPadding = when (index) {
+                    0 -> PaddingValues(bottom = 4.dp)
+                    data.lastIndex -> PaddingValues(top = 4.dp)
+                    else -> PaddingValues(vertical = 4.dp)
+                }
+
                 val movie = data[index]
-                PopularMovieItem(item = movie) {
+                PopularMovieItem(item = movie, padding = itemPadding) {
                     navController.navigate(Screen.MovieDetail.route(movieId = movie.id))
                 }
             }

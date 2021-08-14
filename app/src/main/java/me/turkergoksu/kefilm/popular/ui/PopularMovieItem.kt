@@ -41,19 +41,17 @@ fun PreviewPopularMovieItem() {
         popularity = 1234,
     )
     KefilmTheme {
-        PopularMovieItem(item = item) {
-
-        }
+        PopularMovieItem(item = item, onClick = { })
     }
 }
 
 @Composable
 fun PopularMovieItem(
     item: PopularMovieItem,
-    paddingValues: PaddingValues = PaddingValues(vertical = 8.dp),
+    padding: PaddingValues = PaddingValues(),
     onClick: (PopularMovieItem) -> Unit
 ) {
-    ConstraintLayout(modifier = Modifier.padding(paddingValues)) {
+    ConstraintLayout(modifier = Modifier.padding(padding)) {
         val (backdrop, title, popularity) = createRefs()
 
         Card(shape = RoundedCornerShape(16.dp), modifier = Modifier.constrainAs(backdrop) {
