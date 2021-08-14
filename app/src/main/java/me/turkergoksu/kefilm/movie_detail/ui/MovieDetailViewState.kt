@@ -2,7 +2,6 @@ package me.turkergoksu.kefilm.movie_detail.ui
 
 import androidx.compose.ui.graphics.Color
 import me.turkergoksu.kefilm.Constants
-import me.turkergoksu.kefilm.ext.formatDefaultDate
 import me.turkergoksu.kefilm.movie_detail.data.MovieDetail
 import me.turkergoksu.kefilm.theme.BadMovieRatingColor
 import me.turkergoksu.kefilm.theme.GoodMovieRatingColor
@@ -30,11 +29,8 @@ data class MovieDetailViewState(val movieDetail: MovieDetail) {
 
     fun posterUrl() = Constants.API_IMAGE_URL + movieDetail.posterPath
 
-    fun releaseYear(): String {
-        return if (movieDetail.releaseDate.isNotEmpty())
-            movieDetail.releaseDate.formatDefaultDate(MOVIE_DETAIL_DATE_FORMAT)
-        else
-            tba
+    fun releaseDate(): String {
+        return if (movieDetail.releaseDate.isNotEmpty()) movieDetail.releaseDate else tba
     }
 
     fun runtimeText(): String {
@@ -66,9 +62,5 @@ data class MovieDetailViewState(val movieDetail: MovieDetail) {
             avg < 100 -> GoodMovieRatingColor
             else -> Color.Black
         }
-    }
-
-    companion object {
-        const val MOVIE_DETAIL_DATE_FORMAT = "yyyy"
     }
 }

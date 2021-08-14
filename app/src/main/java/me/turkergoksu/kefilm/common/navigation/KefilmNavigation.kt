@@ -164,7 +164,6 @@ private fun NavGraphBuilder.addMovieDetailScreen(navController: NavController) {
         val movieId = it.arguments?.getInt(Screen.MovieDetail.ARG_MOVIE_ID)
             ?: throw IllegalStateException("movieId cannot be null.")
         MovieDetailScreen(
-            navController = navController,
             viewModel = hiltViewModel(),
             movieId = movieId
         )

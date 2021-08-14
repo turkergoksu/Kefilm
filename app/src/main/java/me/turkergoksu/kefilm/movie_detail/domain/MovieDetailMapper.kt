@@ -1,5 +1,6 @@
 package me.turkergoksu.kefilm.movie_detail.domain
 
+import me.turkergoksu.kefilm.ext.formatDefaultDate
 import me.turkergoksu.kefilm.movie_detail.data.Genre
 import me.turkergoksu.kefilm.movie_detail.data.MovieDetail
 import me.turkergoksu.kefilm.movie_detail.data.remote.MovieDetailResponse
@@ -13,9 +14,13 @@ class MovieDetailMapper @Inject constructor() {
         genres = response.genres?.map { Genre(id = it.id ?: 0, name = it.name ?: "") } ?: listOf(),
         overview = response.overview ?: "",
         posterPath = response.posterPath ?: "",
-        releaseDate = response.releaseDate ?: "",
+        releaseDate = response.releaseDate?.formatDefaultDate(MOVIE_DETAIL_DATE_FORMAT) ?: "",
         runtime = response.runtime ?: 0,
         title = response.title ?: "",
         voteAverage = response.voteAverage ?: 0.0
     )
+
+    companion object {
+        const val MOVIE_DETAIL_DATE_FORMAT = "MMM yyyy"
+    }
 }
