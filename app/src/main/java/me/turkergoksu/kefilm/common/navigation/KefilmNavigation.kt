@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberNew
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -27,6 +28,7 @@ import me.turkergoksu.kefilm.R
 import me.turkergoksu.kefilm.movie_detail.ui.MovieDetailScreen
 import me.turkergoksu.kefilm.now_playing.ui.NowPlayingScreen
 import me.turkergoksu.kefilm.popular.ui.PopularScreen
+import me.turkergoksu.kefilm.search.ui.SearchScreen
 
 /**
  * Created by turkergoksu on 21-Jun-21.
@@ -105,6 +107,13 @@ private fun KefilmBottomNavigation(
                 selected = this == Screen.Popular,
                 onClick = { onScreenSelected(Screen.Popular) }
             )
+
+            KefilmBottomNavigationItem(
+                icon = Icons.Filled.Search,
+                label = stringResource(id = R.string.search),
+                selected = this == Screen.Search,
+                onClick = { onScreenSelected(Screen.Search) }
+            )
         }
     }
 }
@@ -135,7 +144,8 @@ private fun Navigation(navHostController: NavHostController, innerPadding: Paddi
     ) {
         addNowPlayingScreen(navController = navHostController)
         addPopularScreen(navController = navHostController)
-        addMovieDetailScreen(navController = navHostController)
+        addMovieDetailScreen()
+        addSearchScreen()
     }
 }
 
@@ -154,7 +164,7 @@ private fun NavGraphBuilder.addPopularScreen(navController: NavController) {
     }
 }
 
-private fun NavGraphBuilder.addMovieDetailScreen(navController: NavController) {
+private fun NavGraphBuilder.addMovieDetailScreen() {
     composable(
         Screen.MovieDetail.route,
         arguments = listOf(navArgument(Screen.MovieDetail.ARG_MOVIE_ID) {
@@ -167,5 +177,11 @@ private fun NavGraphBuilder.addMovieDetailScreen(navController: NavController) {
             viewModel = hiltViewModel(),
             movieId = movieId
         )
+    }
+}
+
+private fun NavGraphBuilder.addSearchScreen() {
+    composable(Screen.Search.route) {
+        SearchScreen()
     }
 }

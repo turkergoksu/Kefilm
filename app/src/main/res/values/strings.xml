@@ -12,4 +12,7 @@
 
     <!--    Popular-->
     <string name="popular">Popular</string>
+
+    <!--    Search-->
+    <string name="search">Search</string>
 </resources>

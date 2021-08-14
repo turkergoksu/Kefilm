@@ -9,6 +9,7 @@ sealed class Screen(
     // Bottom Nav
     object NowPlaying : Screen(route = "nowPlaying")
     object Popular : Screen(route = "popular")
+    object Search : Screen(route = "search")
 
     // Nav
     object MovieDetail : Screen(route = "movieDetail/{movieId}") {
