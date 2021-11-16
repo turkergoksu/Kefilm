@@ -145,7 +145,7 @@ private fun Navigation(navHostController: NavHostController, innerPadding: Paddi
         addNowPlayingScreen(navController = navHostController)
         addPopularScreen(navController = navHostController)
         addMovieDetailScreen()
-        addSearchScreen()
+        addSearchScreen(navController = navHostController)
     }
 }
 
@@ -180,8 +180,8 @@ private fun NavGraphBuilder.addMovieDetailScreen() {
     }
 }
 
-private fun NavGraphBuilder.addSearchScreen() {
+private fun NavGraphBuilder.addSearchScreen(navController: NavController) {
     composable(Screen.Search.route) {
-        SearchScreen()
+        SearchScreen(navController = navController, viewModel = hiltViewModel())
     }
 }
