@@ -1,8 +1,9 @@
 package me.turkergoksu.kefilm.common.navigation
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberNew
@@ -13,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -29,6 +32,7 @@ import me.turkergoksu.kefilm.movie_detail.ui.MovieDetailScreen
 import me.turkergoksu.kefilm.now_playing.ui.NowPlayingScreen
 import me.turkergoksu.kefilm.popular.ui.PopularScreen
 import me.turkergoksu.kefilm.search.ui.SearchScreen
+import me.turkergoksu.kefilm.theme.BottomBackgroundColor
 
 /**
  * Created by turkergoksu on 21-Jun-21.
@@ -54,7 +58,7 @@ fun KefilmNavigation(navController: NavHostController) {
                 })
         }
     ) { innerPadding ->
-        Navigation(navHostController = navController, innerPadding = innerPadding)
+        Navigation(navHostController = navController)
     }
 }
 
@@ -75,6 +79,9 @@ private fun NavController.currentScreenAsState(): State<Screen> {
                 destination.hierarchy.any { it.route == Screen.MovieDetail.route } -> {
                     selectedItem.value = Screen.MovieDetail
                 }
+                destination.hierarchy.any { it.route == Screen.Search.route } -> {
+                    selectedItem.value = Screen.Search
+                }
             }
         }
         addOnDestinationChangedListener(listener)
@@ -92,7 +99,7 @@ private fun KefilmBottomNavigation(
     selectedScreen: Screen,
     onScreenSelected: (Screen) -> Unit,
 ) {
-    BottomNavigation(contentColor = contentColorFor(MaterialTheme.colors.surface)) {
+    CustomKefilmBottomNavigation {
         with(selectedScreen) {
             KefilmBottomNavigationItem(
                 icon = Icons.Filled.FiberNew,
@@ -119,28 +126,89 @@ private fun KefilmBottomNavigation(
 }
 
 @Composable
-private fun RowScope.KefilmBottomNavigationItem(
+fun CustomKefilmBottomNavigation(
+    content: @Composable RowScope.() -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 64.dp, vertical = 16.dp)
+            .height(50.dp),
+        shape = RoundedCornerShape(16.dp)
+    ) {
+        BottomNavigation(
+            backgroundColor = BottomBackgroundColor,
+            content = content
+        )
+    }
+}
+
+@Preview
+@Composable
+fun BottomNavPreview() {
+    CustomKefilmBottomNavigation {
+        KefilmBottomNavigationItem(
+            icon = Icons.Filled.FiberNew,
+            label = "Now Playing",
+            selected = false
+        ) {
+
+        }
+        KefilmBottomNavigationItem(
+            icon = Icons.Filled.TrendingUp,
+            label = "Popular",
+            selected = true
+        ) {
+
+        }
+        KefilmBottomNavigationItem(icon = Icons.Filled.Search, label = "Search", selected = false) {
+
+        }
+    }
+}
+
+@Composable
+private fun KefilmBottomNavigationItem(
     icon: ImageVector,
     label: String,
     selected: Boolean,
     onClick: () -> Unit,
 ) {
-    BottomNavigationItem(
-        icon = { Icon(imageVector = icon, tint = Color.White, contentDescription = null) },
-        label = { Text(text = label, color = Color.White) },
-        selected = selected,
-        onClick = onClick,
-    )
+    val color = if (selected) Color.DarkGray else Color.Transparent
+    val iconTint = if (selected) Color.White else Color.Gray
+
+    Row(
+        modifier = Modifier
+            .clickable(
+                indication = null,
+                interactionSource = remember {
+                    MutableInteractionSource()
+                },
+                onClick = onClick
+            )
+    ) {
+        Card(
+            shape = RoundedCornerShape(16.dp),
+            backgroundColor = color,
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp)
+        ) {
+            BottomNavigationItem(
+                icon = { Icon(imageVector = icon, tint = iconTint, contentDescription = null) },
+                selected = selected,
+                modifier = Modifier.padding(horizontal = 16.dp),
+                onClick = onClick,
+            )
+        }
+    }
 }
 
 @ExperimentalPagerApi
 @ExperimentalMaterialApi
 @Composable
-private fun Navigation(navHostController: NavHostController, innerPadding: PaddingValues) {
+private fun Navigation(navHostController: NavHostController) {
     NavHost(
         navController = navHostController,
         startDestination = Screen.NowPlaying.route,
-        modifier = Modifier.padding(innerPadding)
     ) {
         addNowPlayingScreen(navController = navHostController)
         addPopularScreen(navController = navHostController)

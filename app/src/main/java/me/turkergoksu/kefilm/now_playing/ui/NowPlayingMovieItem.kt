@@ -7,15 +7,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -49,7 +44,12 @@ fun NowPlayingMovieItem(nowPlayingMovieItem: NowPlayingMovieItem, onClick: () ->
     ConstraintLayout(
         modifier = Modifier
             .width(LocalConfiguration.current.screenWidthDp.dp)
-            .padding(all = 16.dp)
+            .padding(
+                start = 16.dp,
+                end = 16.dp,
+                top = 16.dp,
+                bottom = 82.dp
+            ) //TODO Bottom nav height = 50dp, paddings 16.dp = 82
     ) {
         val (card, text) = createRefs()
 
@@ -75,18 +75,18 @@ fun NowPlayingMovieItem(nowPlayingMovieItem: NowPlayingMovieItem, onClick: () ->
                 modifier = Modifier.fillMaxSize()
             )
         }
-        Text(
-            text = nowPlayingMovieItem.title,
-            color = Color.Red,
-            maxLines = 1,
-            style = MaterialTheme.typography.h5,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.constrainAs(text) {
-                bottom.linkTo(parent.bottom)
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
-            }
-        )
+//        Text(
+//            text = nowPlayingMovieItem.title,
+//            color = Color.Red,
+//            maxLines = 1,
+//            style = MaterialTheme.typography.h5,
+//            overflow = TextOverflow.Ellipsis,
+//            textAlign = TextAlign.Center,
+//            modifier = Modifier.constrainAs(text) {
+//                bottom.linkTo(parent.bottom)
+//                start.linkTo(parent.start)
+//                end.linkTo(parent.end)
+//            }
+//        )
     }
 }

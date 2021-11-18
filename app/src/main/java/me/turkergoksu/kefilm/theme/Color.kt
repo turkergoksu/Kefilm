@@ -7,6 +7,9 @@ val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
+val AppBackgroundColor = Color(0xff1F1E1E)
+val BottomBackgroundColor = Color(0xFF111010)
+
 val BadMovieRatingColor = Color.Red
 val MediocreMovieRatingColor = Color(0xFFffa726)
 val GoodMovieRatingColor = Color.Green
